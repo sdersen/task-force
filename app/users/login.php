@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 // In this file we login users.
@@ -19,10 +20,13 @@ if (isset($_POST['email'], $_POST['password'])) {
         $_SESSION['user'] = [
             'id' => $user['id'],
             'name' => $user['name'],
-            'email' => $user['email']
+            'email' => $user['email'],
+            'image' => $user['image']
         ];
         redirect('/index.php');
     } else {
+        //funkar ej
         redirect('/login.php');
+        echo 'Ups somethiong went wrong...';
     }
 };
