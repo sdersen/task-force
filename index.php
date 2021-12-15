@@ -1,6 +1,5 @@
-<!-- Tog bort autoload och la denna för att kunna använda tasks -->
 <?php require __DIR__ . '/app/tasks/getTasks.php'; ?>
-
+<!-- Tog bort autoload och la denna för att kunna använda tasks -->
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article>
