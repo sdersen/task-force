@@ -5,9 +5,7 @@
 <?php
 // Får inte denna att funka
 if ($updateCompleate) : ?>
-
     <p><?php echo 'Your password and/or email was succesfully changed'; ?></p>
-
 <?php endif; ?>
 <span>Name</span>
 <p><?= $_SESSION['user']['name'] ?></p>

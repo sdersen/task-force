@@ -8,7 +8,6 @@
     <?php
 
     if (isset($_SESSION['user'])) : ?>
-
         <p style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></p>
         <!-- Hämtas bara om jag loggar ut och in efter att bilden laddats upp -->
         <img src="<?php echo $_SESSION['user']['image']; ?>" alt="">

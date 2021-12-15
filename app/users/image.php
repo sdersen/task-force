@@ -32,6 +32,5 @@ if (isset($_FILES['upload'])) {
 
 
         // redirect('/profile.php');
-
     };
 };
