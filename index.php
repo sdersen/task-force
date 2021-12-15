@@ -44,9 +44,10 @@
                     <p class="task-description"><?= $task['description']; ?></p>
                     <span>Deadline</span><span><?= $task['completed_at']; ?></span>
 
-                    <button class="edit_task_btn">Edit</button>
-                    <form action="app/tasks/done.php">
-                        <button>Done</button>
+                    <button class="edit-task-btn">Edit</button>
+                    <form action="app/tasks/done.php" method="POST">
+                        <button class="done-task-btn" type="submit">Done</button>
+                        <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                     </form>
 
                     <div class="edit-container hidden">

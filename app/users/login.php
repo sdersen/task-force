@@ -6,7 +6,6 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['email'], $_POST['password'])) {
     $email = trim($_POST['email']);
-
     $statement = $database->prepare('SELECT * FROM users WHERE email =:email');
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
@@ -29,15 +28,7 @@ if (isset($_POST['email'], $_POST['password'])) {
         ];
         redirect('/index.php');
     } elseif ($user['email'] !== $_POST['email'] || password_verify($_POST['password'], $user['password']) === false) {
-
         $_SESSION['errors'][] = 'Sorry, wrong email or password..';
         redirect('/login.php');
     };
-
-
-    // else {
-    //     //funkar ej
-    //     redirect('/login.php');
-    //     echo 'Ups somethiong went wrong...';
-    // }
 };

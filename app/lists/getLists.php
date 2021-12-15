@@ -7,9 +7,9 @@ require __DIR__ . '/../autoload.php';
 if (isset($_SESSION['user']['id'])) {
     $id = $_SESSION['user']['id'];
 
-    $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL;');
+    $statement = $database->query('SELECT * FROM lists WHERE user_id = :user_id;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
 
     $statement->execute();
-    $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $lists = $statement->fetchAll(PDO::FETCH_ASSOC);
 }

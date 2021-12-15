@@ -1,13 +1,16 @@
 const taskContainers = document.querySelectorAll('.task-container');
 
 taskContainers.forEach((taskContainer) => {
-    console.log('container skapad');
-    const editTaskBtn = taskContainer.querySelector('.edit_task_btn');
+    const editTaskBtn = taskContainer.querySelector('.edit-task-btn');
     const taskEditField = taskContainer.querySelector('.edit-container');
+    const taskDoneBtn = taskContainer.querySelector('.done-task-btn');
 
     editTaskBtn.addEventListener('click', () => {
         taskEditField.classList.toggle('hidden');
-        console.log('klick');
+    });
+    // Funkar inte eftersom sidan hoppar till done.php och sen tillbaka
+    taskDoneBtn.addEventListener('click', () => {
+        taskContainer.classList.add('task-done');
     });
 });
 
