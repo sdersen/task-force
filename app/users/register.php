@@ -6,7 +6,8 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     $email = trim($_POST['email']);
-    $name = trim($_POST['name']);
+    $name = trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING));
+
     $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     if ($email === '') {
@@ -17,7 +18,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         $_SESSION['errors'][] = 'Not valid email.';
         redirect('/register.php');
-
     } else {
         $statement = $database->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password);');
         $statement->bindParam(':name', $name, PDO::PARAM_STR);
