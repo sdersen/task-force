@@ -1,12 +1,8 @@
 <?php
 
 declare(strict_types=1);
-
-declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
-// In this file we login users.
-//
 if (isset($_POST['email'], $_POST['password'])) {
     $email = trim($_POST['email']);
 
@@ -15,7 +11,14 @@ if (isset($_POST['email'], $_POST['password'])) {
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if ($user['email'] === $_POST['email'] && password_verify($_POST['password'], $user['password'])) {
+    if (!$user) {
+        $_SESSION['errors'] = [];
+        $_SESSION['errors'][] = 'Sorry, no record of this email';
+
+        redirect('/login.php');
+    }
+    if (password_verify($_POST['password'], $user['password'])) {
+        unset($user['password']);
 
         $_SESSION['user'] = [
             'id' => $user['id'],
@@ -24,9 +27,16 @@ if (isset($_POST['email'], $_POST['password'])) {
             'image' => $user['image']
         ];
         redirect('/index.php');
-    } else {
-        //funkar ej
+    } elseif ($user['email'] !== $_POST['email'] || password_verify($_POST['password'], $user['password']) === false) {
+
+        $_SESSION['errors'][] = 'Sorry, wrong email or password..';
         redirect('/login.php');
-        echo 'Ups somethiong went wrong...';
-    }
+    };
+
+
+    // else {
+    //     //funkar ej
+    //     redirect('/login.php');
+    //     echo 'Ups somethiong went wrong...';
+    // }
 };

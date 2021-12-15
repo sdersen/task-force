@@ -8,7 +8,7 @@ if (isset($_SESSION['user']['id'])) {
 
     $id = $_SESSION['user']['id'];
 
-    $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id ORDER BY completed_by;');
+    $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
 
     $statement->execute();

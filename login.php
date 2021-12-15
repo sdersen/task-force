@@ -6,6 +6,16 @@
     <h1>Login</h1>
 
     <form action="app/users/login.php" method="post">
+        <?php
+        // var_dump($_SESSION['errors']);
+        if (isset($_SESSION['errors'])) :
+            foreach ($_SESSION['errors'] as $error) : ?>
+                <p><?= $error ?></p>
+        <?php endforeach;
+            unset($_SESSION['errors']);
+        endif;
+        ?>
+
         <div class="mb-3">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" id="email" placeholder="francis@darjeeling.com" required>

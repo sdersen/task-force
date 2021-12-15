@@ -19,6 +19,9 @@
 
             <?php if (isset($_SESSION['user'])) : ?>
                 <li class="nav-item">
+                    <a class="nav-link" href="/lists.php">Your lists</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/app/users/logout.php">Logout</a>
                 </li>
                 <li class="nav-item">

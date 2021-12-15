@@ -1,5 +1,6 @@
 <!-- Tog bort autoload och la denna för att kunna använda tasks -->
 <?php require __DIR__ . '/app/tasks/getTasks.php'; ?>
+
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article>
@@ -43,9 +44,12 @@
                 <article class="task-container">
                     <h3 class="task-title"><?= $task['title']; ?></h3>
                     <p class="task-description"><?= $task['description']; ?></p>
-                    <span>Deadline</span><span><?= $task['completed_by']; ?></span>
+                    <span>Deadline</span><span><?= $task['completed_at']; ?></span>
+
                     <button class="edit_task_btn">Edit</button>
-                    <p><?= $task['id']; ?></p>
+                    <form action="app/tasks/done.php">
+                        <button>Done</button>
+                    </form>
 
                     <div class="edit-container hidden">
                         <form action="app/tasks/update.php" method="post">
@@ -71,14 +75,15 @@
 
                             <button type="submit" class="btn btn-primary">Update task</button>
                         </form>
+                        <form action="app/tasks/delete.php" method="post">
+                            <input type="hidden" id="delete_id" name="delete_id" value="<?= $task['id'] ?>">
+                            <button type="submit" class="btn btn-primary">Delete</button>
+                        </form>
                     </div>
                 </article>
             <?php endforeach; ?>
-
         </section>
-
     <?php endif; ?>
-
 </article>
 
 <?php require __DIR__ . '/views/footer.php'; ?>
