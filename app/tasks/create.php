@@ -11,27 +11,17 @@ if (isset($_POST['title'])) {
     $id = $_SESSION['user']['id'];
     $createdDate = date("Y-m-d");
 
+    // var_dump($id);
     //Oklart om denna ska deklareras här?
 
     // $errors = [];
 
-    // if ($email === '') {
-    //     $errors[] = 'The email field is missing.';
-    // }
-
-    // if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-    //     $errors[] = 'The email is not valid email address.';
-    // }
-
-    $statement = $database->prepare('INSERT INTO tasks (title, description, created_at, completed_by) VALUES (:title, :description, :created_at, :completed_by);');
+    $statement = $database->prepare('INSERT INTO tasks (title, description, created_at, completed_by, user_id) VALUES (:title, :description, :created_at, :completed_by, :user_id);');
     $statement->bindParam(':title', $title, PDO::PARAM_STR);
     $statement->bindParam(':description', $description, PDO::PARAM_STR);
     $statement->bindParam(':completed_by', $doneBy, PDO::PARAM_STR);
     $statement->bindParam(':created_at', $createdDate, PDO::PARAM_STR);
-    // $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-
-
-
+    $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
 
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);

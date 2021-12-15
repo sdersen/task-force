@@ -50,22 +50,24 @@
                     <div class="edit-container hidden">
                         <form action="app/tasks/update.php" method="post">
                             <div class="mb-3">
-                                <label for="new-title">Title</label>
-                                <input class="form-control" type="text" name="new-title" id="new-title" placeholder="An amazing title">
+                                <label for="title">Title</label>
+                                <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title">
                                 <small class="form-text">Please enter a title for your task.</small>
                             </div>
 
                             <div class="mb-3">
-                                <label for="new-description">Description</label>
-                                <input class="form-control" type="text" name="new-description" id="new-description">
+                                <label for="description">Description</label>
+                                <input class="form-control" type="text" name="description" id="description">
                                 <small class="form-text">Please provide the your description.</small>
                             </div>
 
                             <div class="mb-3">
-                                <label for="new-date">Dedline</label>
-                                <input type="date" name="new-date" id="new-date">
+                                <label for="date">Dedline</label>
+                                <input type="date" name="date" id="date">
                                 <small class="form-text">Add a deadline</small>
                             </div>
+
+                            <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
 
                             <button type="submit" class="btn btn-primary">Update task</button>
                         </form>
