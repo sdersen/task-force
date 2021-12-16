@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/app/tasks/getTasks.php'; ?>
+<?php require __DIR__ . '/app/autoload.php'; ?>
 <!-- Tog bort autoload och la denna för att kunna använda tasks -->
 <?php require __DIR__ . '/views/header.php'; ?>
 
@@ -6,6 +6,9 @@
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
     <?php
+    // var_dump($_SESSION['user']);
+    // var_dump(getPosts($_SESSION['user']['id']));
+    // var_dump($_SESSION['tasks']);
 
     if (isset($_SESSION['user'])) : ?>
         <p style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></p>
@@ -19,26 +22,22 @@
                     <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" required>
                     <small class="form-text">Please enter a titl for your task.</small>
                 </div>
-
                 <div class="mb-3">
                     <label for="description">Description</label>
                     <input class="form-control" type="text" name="description" id="description">
                     <small class="form-text">Please provide the your description.</small>
                 </div>
-
                 <div class="mb-3">
                     <label for="date">Dedline</label>
                     <input type="date" name="date" id="date">
                     <small class="form-text">Add a deadline</small>
                 </div>
-
                 <button type="submit" class="btn btn-primary">Create task</button>
             </form>
 
         </section>
         <section>
-            <?php
-            foreach ($tasks as $task) : ?>
+            <?php foreach (getPosts($_SESSION['user']['id']) as $task) : ?>
                 <article class="task-container">
                     <h3 class="task-title"><?= $task['title']; ?></h3>
                     <p class="task-description"><?= $task['description']; ?></p>
@@ -48,6 +47,15 @@
                     <form action="app/tasks/done.php" method="POST">
                         <button class="done-task-btn" type="submit">Done</button>
                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
+                    </form>
+                    <form action="app/tasks/done.php" method="POST">
+                        <label for="list">Add to list</label>
+                        <select name="list" id="list">
+                            <?php
+                            foreach (getLists($_SESSION['user']['id']) as $list) : ?>
+                                <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </form>
 
                     <div class="edit-container hidden">

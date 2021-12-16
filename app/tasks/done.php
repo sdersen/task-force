@@ -5,7 +5,6 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 $id = $_POST['done_id'];
-var_dump($id);
 $doneDate = date("Y-m-d");
 
 $statement = $database->prepare(

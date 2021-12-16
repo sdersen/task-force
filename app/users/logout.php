@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-// In this file we logout users.
-session_destroy();
+if (isset($_SESSION['user'])) {
+    unset($_SESSION['user']);
+};
+if (isset($_SESSION['tasks'])) {
+    unset($_SESSION['tasks']);
+};
+
+// session_destroy();
 
 redirect('/index.php');
