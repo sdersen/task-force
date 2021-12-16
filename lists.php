@@ -17,7 +17,7 @@
     if (isset($_SESSION['user'])) : ?>
         <section>
             <?php
-            foreach (getLists($_SESSION['user']['id']) as $list) : ?>
+            foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
                 <article class="list-container">
                     <h3 class="list-title"><?= $list['title']; ?></h3>
                     <span>Created</span><span><?= $list['created_at']; ?></span>

@@ -37,7 +37,7 @@
 
         </section>
         <section>
-            <?php foreach (getPosts($_SESSION['user']['id']) as $task) : ?>
+            <?php foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
                     <h3 class="task-title"><?= $task['title']; ?></h3>
                     <p class="task-description"><?= $task['description']; ?></p>
@@ -48,14 +48,16 @@
                         <button class="done-task-btn" type="submit">Done</button>
                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                     </form>
-                    <form action="app/tasks/done.php" method="POST">
+                    <form action="app/tasks/addToList.php" method="POST">
                         <label for="list">Add to list</label>
                         <select name="list" id="list">
                             <?php
-                            foreach (getLists($_SESSION['user']['id']) as $list) : ?>
+                            foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
                                 <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
                             <?php endforeach; ?>
                         </select>
+                        <input type="hidden" id="task_id" name="task_id" value="<?= $task['id'] ?>">
+                        <button type="submit">add task</button>
                     </form>
 
                     <div class="edit-container hidden">

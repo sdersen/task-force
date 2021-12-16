@@ -8,9 +8,8 @@ function redirect(string $path)
     exit;
 };
 
-function getPosts($id)
+function getTasks($id, $database)
 {
-    $database = new PDO('sqlite:app/database/database.db');
     $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
     $statement->execute();
@@ -18,9 +17,8 @@ function getPosts($id)
     return $tasks;
 };
 
-function getLists($id)
+function getLists($id,$database)
 {
-    $database = new PDO('sqlite:app/database/database.db');
     $statement = $database->query('SELECT * FROM lists WHERE user_id = :user_id;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
     $statement->execute();
