@@ -17,7 +17,7 @@ function getTasks($id, $database)
     return $tasks;
 };
 
-function getLists($id,$database)
+function getLists($id, $database)
 {
     $statement = $database->query('SELECT * FROM lists WHERE user_id = :user_id;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);

@@ -14,7 +14,17 @@ taskContainers.forEach((taskContainer) => {
     });
 });
 
-// const updateProfileField = document.querySelector('.update-profile-container');
-// const updateProfileBtn = document.querySelector('.update-profile-btn');
+const listContainers = document.querySelectorAll('.list-container');
 
-// taskEditFields.forEach((taskEditField) => {});
+listContainers.forEach((listContainer) => {
+    const editListBtn = listContainer.querySelector('.edit-list-btn');
+    const listEditContainer = listContainer.querySelector(
+        '.edit-list-container'
+    );
+    // const taskDoneBtn = listContainer.querySelector('.done-task-btn');
+    console.log('hej');
+
+    editListBtn.addEventListener('click', () => {
+        listEditContainer.classList.toggle('hidden');
+    });
+});

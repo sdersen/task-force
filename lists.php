@@ -22,11 +22,11 @@
                     <h3 class="list-title"><?= $list['title']; ?></h3>
                     <span>Created</span><span><?= $list['created_at']; ?></span>
 
-                    <button class="edit_list_btn">Edit</button>
+                    <button class="edit-list-btn">Edit</button>
                     <form action="app/list/done.php">
                         <button>Done</button>
                     </form>
-                    <div class="edit-list-container">
+                    <div class="edit-list-container hidden">
                         <form action="app/lists/update.php" method="post">
                             <div class="mb-3">
                                 <label for="title">Title</label>
