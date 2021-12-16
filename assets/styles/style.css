@@ -21,6 +21,10 @@ a {
     border: black 1px solid;
     border-radius: 15px;
 }
+.list-container {
+    border: black 1px solid;
+    border-radius: 15px;
+}
 
 .task-done {
     border: green 1px solid;

@@ -25,3 +25,11 @@ function getLists($id, $database)
     $lists = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $lists;
 };
+function getTasksForList($id, $database)
+{
+    $statement = $database->query('SELECT * FROM tasks WHERE list_id = :list_id;');
+    $statement->bindParam(':list_id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    $listTasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $listTasks;
+};
