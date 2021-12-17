@@ -27,6 +27,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/profile.php">Profile</a>
                 </li>
+                <li class="nav-item">
+                    <!-- Hämtas bara om jag loggar ut och in efter att bilden laddats upp -->
+                    <img class="profile-img-nav" src="<?php echo $_SESSION['user']['image']; ?>" alt="">
+                </li>
             <?php endif; ?>
 
         </ul>

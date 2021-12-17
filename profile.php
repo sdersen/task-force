@@ -3,7 +3,8 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <!-- Behöver ett meddelande att uppdatering lyckats... -->
-
+<img class="profile-img-profile" src="<?php echo $_SESSION['user']['image']; ?>" alt="">
+<br>
 <span>Name</span>
 <p><?= $_SESSION['user']['name'] ?></p>
 
@@ -11,6 +12,7 @@
 <p><?= $_SESSION['user']['email'] ?></p>
 
 <button class="update-profile-btn">Update profile</button>
+<button class="knapp">knapp</button>
 <?php
 if (isset($_SESSION['update_errors'])) :
     foreach ($_SESSION['update_errors'] as $error) : ?>
@@ -20,7 +22,7 @@ if (isset($_SESSION['update_errors'])) :
 endif;
 ?>
 <article class="update-profile-container hidden">
-    <h3>Upate information</h3>
+    <h3>Update information</h3>
 
     <form action="app/users/update.php" method="post">
         <div class="mb-3">
@@ -39,6 +41,14 @@ endif;
 </article>
 
 <form action="app/users/image.php" method="post" enctype="multipart/form-data">
+    <?php
+    if (isset($_SESSION['image_errors'])) :
+        foreach ($_SESSION['image_errors'] as $error) : ?>
+            <p><?= $error ?></p>
+    <?php endforeach;
+        unset($_SESSION['image_errors']);
+    endif;
+    ?>
     <div class="mb-3">
         <label class="form-label" for="upload">Upload profile image</label>
         <input class="form-control" type="file" accept="image/png, image/jpeg, image/jpg" name="upload" id="upload">

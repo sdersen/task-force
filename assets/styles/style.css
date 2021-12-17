@@ -17,6 +17,18 @@ body {
 a {
     color: rgb(30, 43, 43) !important;
 }
+.profile-img-nav{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile-img-profile{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .open-create-task-btn{
     height: 52px;
     width: 52px;
@@ -32,10 +44,12 @@ a {
     border-radius: 15px;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding: 15px;
 }
 .list-container {
     border: black 1px solid;
     border-radius: 15px;
+    padding: 15px;
 }
 
 .task-done {

@@ -1,9 +1,11 @@
+// Toggle create task on index.php ********************
 const openCreateTaskBtn = document.querySelector('.open-create-task-btn');
 const createTaskContainer = document.querySelector('.create-task-container');
 openCreateTaskBtn.addEventListener('click', () => {
     createTaskContainer.classList.toggle('hidden');
 });
 
+// Toggles edit task field on index.php ********************
 const taskContainers = document.querySelectorAll('.task-container');
 
 taskContainers.forEach((taskContainer) => {
@@ -20,6 +22,7 @@ taskContainers.forEach((taskContainer) => {
     });
 });
 
+// Toggles edit list field on lists.php ********************
 const listContainers = document.querySelectorAll('.list-container');
 
 listContainers.forEach((listContainer) => {
@@ -27,7 +30,6 @@ listContainers.forEach((listContainer) => {
     const listEditContainer = listContainer.querySelector(
         '.edit-list-container'
     );
-    // const taskDoneBtn = listContainer.querySelector('.done-task-btn');
     console.log('hej');
 
     editListBtn.addEventListener('click', () => {
@@ -43,6 +45,5 @@ const updateProfileContainer = document.querySelector(
 
 updateProfileBtn.addEventListener('click', () => {
     updateProfileContainer.classList.toggle('hidden');
+    console.log('hej');
 });
-
-

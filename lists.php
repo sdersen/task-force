@@ -57,8 +57,11 @@
                                 <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
                                 <button type="submit" class="btn btn-primary">Delete</button>
                             </form>
+                            <form action="app/lists/delete-list-tasks.php" method="post">
+                                <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
+                                <button type="submit" class="btn btn-primary">Delete list including tasks</button>
+                            </form>
                         </div>
-
                 </article>
             <?php endforeach; ?>
         </section>
