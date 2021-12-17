@@ -23,21 +23,26 @@
                     <span>Created</span><span><?= $list['created_at']; ?></span>
                     <?php foreach (getTasksForList($list['id'], $database) as $task) : ?>
                         <article>
-                            <h5 class="task-title"><?= $task['title']; ?></h5>
-                            <p class="task-description"><?= $task['description']; ?></p>
-                            <span>Deadline</span><span><?= $task['completed_at']; ?></span>
+                            <div class="task-container">
+                                <h5 class="task-title"><?= $task['title']; ?></h5>
+                                <p class="task-description"><?= $task['description']; ?></p>
+                                <span>Deadline</span><span><?= $task['completed_at']; ?></span>
 
-                            <form action="app/tasks/done.php" method="POST">
-                                <button class="done-task-btn" type="submit">Task Done</button>
-                                <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
-                            </form>
+                                <form action="app/tasks/done.php" method="POST">
+                                    <button class="done-task-btn" type="submit">Task Done</button>
+                                    <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
+                                </form>
+                            </div>
                         <?php endforeach; ?>
+
                         </article>
                         <button class="edit-list-btn">Edit list</button>
-                        <form action="app/list/done.php">
-                            <button>List Done</button>
+                        <form action="app/lists/done.php" method="POST">
+                            <button class="done-list-btn" type="submit">List Done</button>
+                            <input type="hidden" id="done_id" name="done_id" value="<?= $list['id'] ?>">
                         </form>
-                        <div class="edit-list-container hidden">
+
+                        <div class="edit-list-container">
                             <form action="app/lists/update.php" method="post">
                                 <div class="mb-3">
                                     <label for="title">Title</label>

@@ -6,9 +6,10 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     $email = trim($_POST['email']);
-    $name = trim(filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-
+    $name = trim(filter_var($_POST['name']));
     $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $databaseEmail = checkEmailInDatabase($database, $email);
 
     if ($email === '') {
         $_SESSION['errors'] = [];
@@ -17,6 +18,10 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     }
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         $_SESSION['errors'][] = 'Not valid email.';
+        redirect('/register.php');
+    }
+    if ($databaseEmail) {
+        $_SESSION['errors'][] = 'The email alredy registerd.';
         redirect('/register.php');
     } else {
         $statement = $database->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password);');
@@ -27,18 +32,5 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
         redirect('/');
-    }
-
-    // Här behöver jag komma på hur man går direkt till inloggat läge och skapa session
-    // if ($user['email'] === $email && password_verify($hashedPassword, $user['password'])) {
-
-    //     $_SESSION['user'] = [
-    //         'id' => $user['id'],
-    //         'name' => $user['name'],
-    //         'email' => $user['email']
-    //     ];
-    //     redirect('/index.php');
-    // } else {
-    //     redirect('/login.php');
-    // }
+    };
 };

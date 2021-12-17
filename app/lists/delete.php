@@ -3,7 +3,17 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
+$id = $_POST['delete_id'];
 
-// In this file we delete new posts in the database.
+$statement = $database->prepare(
+    'DELETE FROM lists WHERE id = :id;'
+);
+$statement->bindParam(':id', $id, PDO::PARAM_INT);
+$statement->execute();
 
-redirect('/');
+//Funkar inte, kolla varför vid tillfälle.
+// $lists = 'lists';
+
+// deleteListOrTask($database, $lists, $_POST['delete_id']);
+
+redirect('/lists.php');

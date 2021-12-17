@@ -3,14 +3,15 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
+$table = 'tasks';
 
-$id = $_POST['delete_id'];
+deleteListOrTask($database, $table, $_POST['delete_id']);
 
-$statement = $database->prepare(
-    'DELETE FROM tasks WHERE id = :id;'
-);
-$statement->bindParam(':id', $id, PDO::PARAM_INT);
+// $statement = $database->prepare(
+//     'DELETE FROM tasks WHERE id = :id;'
+// );
+// $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
-$statement->execute();
-$user = $statement->fetch(PDO::FETCH_ASSOC);
+// $statement->execute();
+// $user = $statement->fetch(PDO::FETCH_ASSOC);
 redirect('/');

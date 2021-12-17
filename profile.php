@@ -2,11 +2,8 @@
 <?php require __DIR__ . '/app/users/update.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<?php
-// Får inte denna att funka
-if ($updateCompleate) : ?>
-    <p><?php echo 'Your password and/or email was succesfully changed'; ?></p>
-<?php endif; ?>
+<!-- Behöver ett meddelande att uppdatering lyckats... -->
+
 <span>Name</span>
 <p><?= $_SESSION['user']['name'] ?></p>
 
@@ -14,20 +11,27 @@ if ($updateCompleate) : ?>
 <p><?= $_SESSION['user']['email'] ?></p>
 
 <button class="update-profile-btn">Update profile</button>
-
+<?php
+if (isset($_SESSION['update_errors'])) :
+    foreach ($_SESSION['update_errors'] as $error) : ?>
+        <p><?= $error ?></p>
+<?php endforeach;
+    unset($_SESSION['update_errors']);
+endif;
+?>
 <article class="update-profile-container hidden">
     <h3>Upate information</h3>
 
     <form action="app/users/update.php" method="post">
         <div class="mb-3">
-            <label for="new-email">Email</label>
-            <input class="form-control" type="email" name="new-email" id="new-email" placeholder="New email" required>
+            <label for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" placeholder="New email" required>
             <small class="form-text">Please provide your new email address.</small>
         </div>
 
         <div class="mb-3">
             <label for="new-password">Password</label>
-            <input class="form-control" type="password" name="new-password" id="new-password" placeholder="New password" required>
+            <input class="form-control" type="password" name="password" id="password" placeholder="New password" required>
             <small class="form-text">Please provide your new password (passphrase). Min X characters.</small>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>

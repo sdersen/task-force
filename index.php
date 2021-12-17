@@ -6,15 +6,12 @@
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
     <?php
-    // var_dump($_SESSION['user']);
-    // var_dump(getPosts($_SESSION['user']['id']));
-    // var_dump($_SESSION['tasks']);
-
     if (isset($_SESSION['user'])) : ?>
         <p style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></p>
         <!-- Hämtas bara om jag loggar ut och in efter att bilden laddats upp -->
         <img src="<?php echo $_SESSION['user']['image']; ?>" alt="">
-        <section class="create-task-container">
+        <button class="open-create-task-btn">+</button>
+        <section class="create-task-container hidden">
 
             <form action="app/tasks/create.php" method="post">
                 <div class="mb-3">

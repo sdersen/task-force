@@ -1,3 +1,9 @@
+const openCreateTaskBtn = document.querySelector('.open-create-task-btn');
+const createTaskContainer = document.querySelector('.create-task-container');
+openCreateTaskBtn.addEventListener('click', () => {
+    createTaskContainer.classList.toggle('hidden');
+});
+
 const taskContainers = document.querySelectorAll('.task-container');
 
 taskContainers.forEach((taskContainer) => {
@@ -28,3 +34,15 @@ listContainers.forEach((listContainer) => {
         listEditContainer.classList.toggle('hidden');
     });
 });
+
+// Toggle update profile on profile.php ********************
+const updateProfileBtn = document.querySelector('.update-profile-btn');
+const updateProfileContainer = document.querySelector(
+    '.update-profile-container'
+);
+
+updateProfileBtn.addEventListener('click', () => {
+    updateProfileContainer.classList.toggle('hidden');
+});
+
+
