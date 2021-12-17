@@ -10,18 +10,15 @@
 
 <span>Email</span>
 <p><?= $_SESSION['user']['email'] ?></p>
-
-<button class="update-profile-btn">Update profile</button>
-<button class="knapp">knapp</button>
 <?php
 if (isset($_SESSION['update_errors'])) :
     foreach ($_SESSION['update_errors'] as $error) : ?>
-        <p><?= $error ?></p>
+        <p class="alert alert-danger"><?= $error ?></p>
 <?php endforeach;
     unset($_SESSION['update_errors']);
 endif;
 ?>
-<article class="update-profile-container hidden">
+<article class="update-profile-container ">
     <h3>Update information</h3>
 
     <form action="app/users/update.php" method="post">

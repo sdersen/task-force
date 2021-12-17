@@ -10,7 +10,7 @@
         // var_dump($_SESSION['errors']);
         if (isset($_SESSION['errors'])) :
             foreach ($_SESSION['errors'] as $error) : ?>
-                <p><?= $error ?></p>
+                <p class="alert alert-danger"><?= $error ?></p>
         <?php endforeach;
             unset($_SESSION['errors']);
         endif;

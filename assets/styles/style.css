@@ -4,6 +4,9 @@
 body {
     margin: 0;
 }
+button {
+    margin: 5px;
+}
 .nav-logo {
     height: 40px;
     margin-left: 40px;
@@ -17,30 +20,34 @@ body {
 a {
     color: rgb(30, 43, 43) !important;
 }
-.profile-img-nav{
+.profile-img-nav {
     height: 50px;
     width: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
-.profile-img-profile{
+.profile-img-profile {
     height: 150px;
     width: 150px;
     border-radius: 50%;
     object-fit: cover;
 }
-.open-create-task-btn{
+.open-create-task-btn {
     height: 52px;
     width: 52px;
     border-radius: 50%;
     border: none;
-    background-color: blue;
+    background-color: #2d6ffc;
     color: white;
     font-size: 2rem;
     font-weight: bold;
 }
+.edit-task-btn {
+    background-color: tomato;
+    border: none;
+}
 .task-container {
-    border: black 1px solid;
+    border: rgb(190, 189, 189) 1px solid;
     border-radius: 15px;
     margin-top: 10px;
     margin-bottom: 10px;

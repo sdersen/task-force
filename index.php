@@ -24,7 +24,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="date">Dedline</label>
-                    <input type="date" name="date" id="date">
+                    <input class="form-control" type="date" name="date" id="date">
                     <small class="form-text">Add a deadline</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Create task</button>
@@ -38,21 +38,22 @@
                     <p class="task-description"><?= $task['description']; ?></p>
                     <span>Deadline</span><span><?= $task['completed_at']; ?></span>
 
-                    <button class="edit-task-btn">Edit</button>
+                    <button class="btn btn-primary edit-task-btn">Edit</button>
                     <form action="app/tasks/done.php" method="POST">
-                        <button class="done-task-btn" type="submit">Done</button>
+                        <button class="btn btn-primary done-task-btn" type="submit">Done</button>
                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                     </form>
                     <form action="app/tasks/addToList.php" method="POST">
                         <label for="list">Add to list</label>
-                        <select name="list" id="list">
+                        <select class="form-select form-select-sm" name="list" id="list">
+                            <option selected>Choose a list</option>
                             <?php
                             foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
-                                <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                                <option class="form-control" value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <input type="hidden" id="task_id" name="task_id" value="<?= $task['id'] ?>">
-                        <button type="submit">add task</button>
+                        <button class="btn btn-primary" type="submit">Add task to list</button>
                     </form>
 
                     <div class="edit-container hidden">
@@ -71,7 +72,7 @@
 
                             <div class="mb-3">
                                 <label for="date">Dedline</label>
-                                <input type="date" name="date" id="date">
+                                <input class="form-control" type="date" name="date" id="date">
                                 <small class="form-text">Add a deadline</small>
                             </div>
 

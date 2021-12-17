@@ -29,16 +29,16 @@
                                 <span>Deadline</span><span><?= $task['completed_at']; ?></span>
 
                                 <form action="app/tasks/done.php" method="POST">
-                                    <button class="done-task-btn" type="submit">Task Done</button>
+                                    <button class="btn btn-primary done-task-btn" type="submit">Task Done</button>
                                     <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                                 </form>
                             </div>
                         <?php endforeach; ?>
 
                         </article>
-                        <button class="edit-list-btn">Edit list</button>
+                        <button class="btn btn-primary edit-list-btn">Edit list</button>
                         <form action="app/lists/done.php" method="POST">
-                            <button class="done-list-btn" type="submit">List Done</button>
+                            <button class="btn btn-primary done-list-btn" type="submit">List Done</button>
                             <input type="hidden" id="done_id" name="done_id" value="<?= $list['id'] ?>">
                         </form>
 
