@@ -19,13 +19,13 @@
             <?php
             foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
                 <article class="list-container">
-                    <h3 class="list-title"><?= $list['title']; ?></h3>
+                    <h3 class="list-title"><?= htmlspecialchars($list['title']); ?></h3>
                     <span>Created</span><span><?= $list['created_at']; ?></span>
                     <?php foreach (getTasksForList($list['id'], $database) as $task) : ?>
                         <article>
                             <div class="task-container">
-                                <h5 class="task-title"><?= $task['title']; ?></h5>
-                                <p class="task-description"><?= $task['description']; ?></p>
+                                <h5 class="task-title"><?= htmlspecialchars($task['title']); ?></h5>
+                                <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
                                 <span>Deadline</span><span><?= $task['completed_at']; ?></span>
 
                                 <form action="app/tasks/done.php" method="POST">

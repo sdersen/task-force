@@ -8,7 +8,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/about.php">About</a>
             </li>
-            <?php if (isset($_SESSION['user']) !== true) : ?>
+            <?php if (isUserLoggedIn() !== true) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/login.php">Login </a>
                 </li>
@@ -17,7 +17,7 @@
                 </li>
             <?php endif; ?>
 
-            <?php if (isset($_SESSION['user'])) : ?>
+            <?php if (isUserLoggedIn()) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/lists.php">Your lists</a>
                 </li>

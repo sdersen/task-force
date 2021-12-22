@@ -48,7 +48,8 @@ endif;
     ?>
     <div class="mb-3">
         <label class="form-label" for="upload">Upload profile image</label>
-        <input class="form-control" type="file" accept="image/png, image/jpeg, image/jpg" name="upload" id="upload">
+        <input class="form-control" type="file" accept="image/png, image/jpeg" name="upload" id="upload">
+        <input type="hidden" id="upload" name="upload" value="<?= $_SESSION['user']['id'] ?>">
         <small class="form-text">Choose your image.</small>
     </div>
 

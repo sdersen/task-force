@@ -32,11 +32,32 @@
 
         </section>
         <section>
+            <h3>Sort by:</h3>
+            <!-- Kolla på att göra en dropdovn ist. -->
+            <form action="app/tasks/sort.php" method="post">
+                <label for="Sort">Sort by</label>
+                <select class="form-control" name="sort" id="sort">
+                    <option class="form-control" value="1">Dedline</option>
+                    <option class="form-control" value="2">Created</option>
+                    <option class="form-control" value="3">Title</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Sort</button>
+            </form>
+            <!-- <form action="app/tasks/sort.php" method="post">
+                <input type="hidden" id="poo" name="poo" value="">
+                <button type="submit" class="btn btn-primary">created</button>
+                <input type="hidden" id="deadline" name="deadline" value="">
+                <button type="submit" class="btn btn-primary">Deadline</button>
+            </form> -->
+        </section>
+        <section>
             <?php foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
-                    <h3 class="task-title"><?= $task['title']; ?></h3>
-                    <p class="task-description"><?= $task['description']; ?></p>
-                    <span>Deadline</span><span><?= $task['completed_at']; ?></span>
+                    <h3 class="task-title"><?= htmlspecialchars($task['title']); ?></h3>
+                    <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
+                    <span>Deadline</span><span><?= htmlspecialchars($task['deadline_at']); ?></span>
+                    <span>Created</span><span><?= $task['created_at']; ?></span>
+                    <span>Belongs to list</span><span><?= $task['created_at']; ?></span>
 
                     <button class="btn btn-primary edit-task-btn">Edit</button>
                     <form action="app/tasks/done.php" method="POST">
@@ -49,12 +70,13 @@
                             <option selected>Choose a list</option>
                             <?php
                             foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
-                                <option class="form-control" value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                                <option class="form-control" value="<?= $list['id']; ?>"><?= htmlspecialchars($list['title']); ?></option>
                             <?php endforeach; ?>
                         </select>
                         <input type="hidden" id="task_id" name="task_id" value="<?= $task['id'] ?>">
                         <button class="btn btn-primary" type="submit">Add task to list</button>
                     </form>
+                    <!-- Print list tat belongs to task. -->
 
                     <div class="edit-container hidden">
                         <form action="app/tasks/update.php" method="post">
@@ -88,6 +110,8 @@
                 </article>
             <?php endforeach; ?>
         </section>
+        <a href="/history.php">History</a>
+
     <?php endif; ?>
 </article>
 
