@@ -1,3 +1,6 @@
+// Navbar
+const dropbtn = document.querySelector('.dropbtn');
+
 // Toggle create task on index.php ********************
 const openCreateTaskBtn = document.querySelector('.open-create-task-btn');
 const createTaskContainer = document.querySelector('.create-task-container');

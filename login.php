@@ -2,7 +2,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 
-<article>
+<article class="login-page">
     <h1>Login</h1>
 
     <form action="app/users/login.php" method="post">

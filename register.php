@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<article>
+<article class="register-page">
     <h1>Register</h1>
 
     <?php

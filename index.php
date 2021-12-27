@@ -2,7 +2,7 @@
 <!-- Tog bort autoload och la denna för att kunna använda tasks -->
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<article>
+<main>
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
     <?php
@@ -53,19 +53,26 @@
         <section>
             <?php foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
-                    <h3 class="task-title"><?= htmlspecialchars($task['title']); ?></h3>
+                    <div class="task-headline-container">
+                        <h3 class="task-title"><?= htmlspecialchars($task['title']); ?></h3>
+                        <!-- EDIT BTN -->
+                        <button class=" edit-task-btn"><img class="btn-icon" src="/assets/images/edit-regular.svg" alt=""></button>
+                    </div>
                     <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
-                    <span>Deadline</span><span><?= htmlspecialchars($task['deadline_at']); ?></span>
-                    <span>Created</span><span><?= $task['created_at']; ?></span>
-                    <span>Belongs to list</span><span><?= $task['created_at']; ?></span>
+                    <span>Deadline: </span><span><?= htmlspecialchars($task['deadline_at']); ?></span><br>
+                    <span>Created: </span><span><?= $task['created_at']; ?></span>
 
-                    <button class="btn btn-primary edit-task-btn">Edit</button>
+                    <?php
+                    if ($task['list_id']) : ?>
+                        <span>Belongs to list: </span><span><?php echo printListForTask($task['id'], $database) ?></span>
+                    <?php endif; ?>
+
                     <form action="app/tasks/done.php" method="POST">
                         <button class="btn btn-primary done-task-btn" type="submit">Done</button>
                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                     </form>
                     <form action="app/tasks/addToList.php" method="POST">
-                        <label for="list">Add to list</label>
+                        <label for="list">Add to or change list</label>
                         <select class="form-select form-select-sm" name="list" id="list">
                             <option selected>Choose a list</option>
                             <?php
@@ -76,7 +83,7 @@
                         <input type="hidden" id="task_id" name="task_id" value="<?= $task['id'] ?>">
                         <button class="btn btn-primary" type="submit">Add task to list</button>
                     </form>
-                    <!-- Print list tat belongs to task. -->
+                    <!-- Print list that belongs to task. -->
 
                     <div class="edit-container hidden">
                         <form action="app/tasks/update.php" method="post">
@@ -113,6 +120,6 @@
         <a href="/history.php">History</a>
 
     <?php endif; ?>
-</article>
+</main>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

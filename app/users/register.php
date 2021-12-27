@@ -25,7 +25,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         $_SESSION['errors'][] = 'The email alredy registerd.';
         redirect('/register.php');
     } else {
-        $image = '/uploads/profile-placeholder-img.jpg';
+        $image = 'app/users/uploads/profile-placeholder-img.jpg';
 
         $statement = $database->prepare('INSERT INTO users (name, email, password, image) VALUES (:name, :email, :password, :image);');
         $statement->bindParam(':name', $name, PDO::PARAM_STR);
