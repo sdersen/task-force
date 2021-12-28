@@ -1,0 +1,66 @@
+.form-control {
+    max-width: 700px;
+}
+/* Tasks ------------------------------------ */
+
+.headline-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.create-task-container {
+    margin-bottom: 20px;
+}
+.task-container {
+    border: rgb(190, 189, 189) 1px solid;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+    max-width: 700px;
+}
+.task-container h3 {
+    margin-top: 5px;
+}
+.edit-task-btn{
+    background-color: transparent;
+    border: none;
+    height: 20px;
+    transition: ease 0.5s;
+}
+.add-list-btn{
+    background-color: transparent;
+    border: none;
+    height: 20px;
+    transition: ease 0.5s;
+}
+.select-list-dropdown {
+    max-width: 200px;
+    height: 35px;
+}
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+/* Lists --------------------------------------- */
+
+.list-container {
+    border: black 1px solid;
+    border-radius: 15px;
+    padding: 15px;
+    max-width: 700px;
+}
+@media screen and (min-width: 992px) {
+    .edit-task-btn {
+        opacity: 0;
+    }
+    .done-task-btn {
+        opacity: 0;
+    }
+    .task-container:hover .edit-task-btn {
+        opacity: 1;
+    }
+    .task-container:hover .done-task-btn {
+        opacity: 1;
+    }
+}

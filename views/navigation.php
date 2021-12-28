@@ -55,8 +55,7 @@
             </ul>
         </div>
     </nav>
-    <img class="hamburger-icon hidden" src="/assets/images/bars-solid.svg" alt="">
-
+    <!-- KORREKTA -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid ">
             <a class="navbar-brand" href="#"> <img class="nav-logo" src="/assets/images/check-double-solid.svg" alt="">
@@ -65,7 +64,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav align-items-end">
+                <div class="navbar-nav align-items-center">
 
                     <li class="nav-item">
                         <a class="nav-link" href="/index.php">Home</a>
@@ -98,12 +97,6 @@
                             <img class="profile-img-nav" src="<?php echo $_SESSION['user']['image']; ?>" alt="">
                         </li>
                     <?php endif; ?>
-
-                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Features</a>
-                    <a class="nav-link" href="#">Pricing</a>
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-
                 </div>
             </div>
         </div>

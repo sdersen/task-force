@@ -4,13 +4,13 @@
 
 <main>
     <h1><?php echo $config['title']; ?></h1>
-    <p>This is the home page.</p>
+    <p>This is the home pageeeee.</p>
     <?php
     if (isset($_SESSION['user'])) : ?>
         <p style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></p>
         <button class="open-create-task-btn">+</button>
+        <!-- CREATE TASK------------------------------------- -->
         <section class="create-task-container hidden">
-
             <form action="app/tasks/create.php" method="post">
                 <div class="mb-3">
                     <label for="title">Title</label>
@@ -53,67 +53,70 @@
         <section>
             <?php foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
-                    <div class="task-headline-container">
+                    <div class="headline-container">
                         <h3 class="task-title"><?= htmlspecialchars($task['title']); ?></h3>
-                        <!-- EDIT BTN -->
-                        <button class=" edit-task-btn"><img class="btn-icon" src="/assets/images/edit-regular.svg" alt=""></button>
+                        <!-- EDIT BTNS ---------------------------------------- -->
+                        <div class="edit-btn-container">
+                            <button class="edit-task-btn"><img class="btn-check-icon btn-icon" src="/assets/images/edit-regular.svg" alt=""></button>
+                            <button class="add-list-btn"><img class="btn-tag-icon btn-icon" src="/assets/images/tag-solid.svg" alt=""></button>
+                        </div>
                     </div>
                     <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
-                    <span>Deadline: </span><span><?= htmlspecialchars($task['deadline_at']); ?></span><br>
+                    <span>Deadline: </span><span><?= htmlspecialchars($task['deadline_at']); ?></span><span> </span>
                     <span>Created: </span><span><?= $task['created_at']; ?></span>
 
                     <?php
                     if ($task['list_id']) : ?>
                         <span>Belongs to list: </span><span><?php echo printListForTask($task['id'], $database) ?></span>
                     <?php endif; ?>
-
-                    <form action="app/tasks/done.php" method="POST">
-                        <button class="btn btn-primary done-task-btn" type="submit">Done</button>
-                        <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
-                    </form>
-                    <form action="app/tasks/addToList.php" method="POST">
-                        <label for="list">Add to or change list</label>
-                        <select class="form-select form-select-sm" name="list" id="list">
-                            <option selected>Choose a list</option>
-                            <?php
-                            foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
-                                <option class="form-control" value="<?= $list['id']; ?>"><?= htmlspecialchars($list['title']); ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <input type="hidden" id="task_id" name="task_id" value="<?= $task['id'] ?>">
-                        <button class="btn btn-primary" type="submit">Add task to list</button>
-                    </form>
-                    <!-- Print list that belongs to task. -->
-
+                    <!-- EDIT CONTAINER -------------------------------------------------------- -->
                     <div class="edit-container hidden">
                         <form action="app/tasks/update.php" method="post">
                             <div class="mb-3">
                                 <label for="title">Title</label>
-                                <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title">
-                                <small class="form-text">Please enter a title for your task.</small>
+                                <input class="form-control" type="text" name="title" id="title" placeholder="New title for your task">
+                                <!-- <small class="form-text">Please enter a title for your task.</small> -->
                             </div>
-
                             <div class="mb-3">
                                 <label for="description">Description</label>
-                                <input class="form-control" type="text" name="description" id="description">
-                                <small class="form-text">Please provide the your description.</small>
+                                <input class="form-control" type="text" name="description" id="description" placeholder="New description for your task">
+                                <!-- <small class="form-text">Please provide the your description.</small> -->
                             </div>
-
                             <div class="mb-3">
                                 <label for="date">Dedline</label>
                                 <input class="form-control" type="date" name="date" id="date">
-                                <small class="form-text">Add a deadline</small>
+                                <!-- <small class="form-text">Add a deadline</small> -->
                             </div>
 
                             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
-
-                            <button type="submit" class="btn btn-primary">Update task</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                         <form action="app/tasks/delete.php" method="post">
                             <input type="hidden" id="delete_id" name="delete_id" value="<?= $task['id'] ?>">
                             <button type="submit" class="btn btn-primary">Delete</button>
                         </form>
                     </div>
+                    <div class="list-form hidden">
+                        <form class=" " action="app/tasks/addToList.php" method="POST">
+                            <label for="list">Add to or change list</label>
+                            <div class="flex-container">
+                                <select class="form-select form-select-sm select-list-dropdown" name="list" id="list">
+                                    <option selected>Choose a list</option>
+                                    <?php
+                                    foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
+                                        <option class="form-control" value="<?= $list['id']; ?>"><?= htmlspecialchars($list['title']); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <input type="hidden" id="task_id" name="task_id" value="<?= $task['id'] ?>">
+                                <button class="btn btn-primary" type="submit">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                    <form action="app/tasks/done.php" method="POST">
+                        <button class="btn btn-success done-task-btn" type="submit">Done</button>
+                        <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
+                    </form>
+
                 </article>
             <?php endforeach; ?>
         </section>

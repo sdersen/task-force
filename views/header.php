@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="/assets/styles/app.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="/assets/styles/btn.css">
+    <link rel="stylesheet" href="/assets/styles/tasks-lists.css">
+    <link rel="stylesheet" href="/assets/styles/nav.css">
+
+
 </head>
 
 <body>

@@ -1,6 +1,3 @@
-// Navbar
-const dropbtn = document.querySelector('.dropbtn');
-
 // Toggle create task on index.php ********************
 const openCreateTaskBtn = document.querySelector('.open-create-task-btn');
 const createTaskContainer = document.querySelector('.create-task-container');
@@ -13,15 +10,17 @@ const taskContainers = document.querySelectorAll('.task-container');
 
 taskContainers.forEach((taskContainer) => {
     const editTaskBtn = taskContainer.querySelector('.edit-task-btn');
+    const addListForm = taskContainer.querySelector('.list-form');
+    const addListBtn = taskContainer.querySelector('.add-list-btn');
     const taskEditField = taskContainer.querySelector('.edit-container');
-    const taskDoneBtn = taskContainer.querySelector('.done-task-btn');
 
     editTaskBtn.addEventListener('click', () => {
         taskEditField.classList.toggle('hidden');
     });
-    // Funkar inte eftersom sidan hoppar till done.php och sen tillbaka
-    taskDoneBtn.addEventListener('click', () => {
-        taskContainer.classList.add('task-done');
+
+    addListBtn.addEventListener('click', () => {
+        addListForm.classList.toggle('hidden');
+        console.log('add list');
     });
 });
 
@@ -37,16 +36,17 @@ listContainers.forEach((listContainer) => {
 
     editListBtn.addEventListener('click', () => {
         listEditContainer.classList.toggle('hidden');
+        console.log('du har klickat');
     });
 });
 
 // Toggle update profile on profile.php ********************
-const updateProfileBtn = document.querySelector('.update-profile-btn');
-const updateProfileContainer = document.querySelector(
-    '.update-profile-container'
-);
+// const updateProfileBtn = document.querySelector('.update-profile-btn');
+// const updateProfileContainer = document.querySelector(
+//     '.update-profile-container'
+// );
 
-updateProfileBtn.addEventListener('click', () => {
-    updateProfileContainer.classList.toggle('hidden');
-    console.log('hej');
-});
+// updateProfileBtn.addEventListener('click', () => {
+//     updateProfileContainer.classList.toggle('hidden');
+//     console.log('hej');
+// });
