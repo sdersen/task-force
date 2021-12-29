@@ -3,6 +3,12 @@
 }
 /* Tasks ------------------------------------ */
 
+path {
+    fill: rgb(169, 172, 172);
+}
+svg {
+    height: 25px;
+}
 .headline-container {
     display: flex;
     justify-content: space-between;
@@ -22,13 +28,13 @@
 .task-container h3 {
     margin-top: 5px;
 }
-.edit-task-btn{
+.edit-task-btn {
     background-color: transparent;
     border: none;
     height: 20px;
     transition: ease 0.5s;
 }
-.add-list-btn{
+.add-list-btn {
     background-color: transparent;
     border: none;
     height: 20px;
@@ -51,14 +57,9 @@
     max-width: 700px;
 }
 @media screen and (min-width: 992px) {
-    .edit-task-btn {
-        opacity: 0;
-    }
-    .done-task-btn {
-        opacity: 0;
-    }
-    .task-container:hover .edit-task-btn {
-        opacity: 1;
+   
+    .task-container:hover path {
+        fill: rgb(54, 54, 54);
     }
     .task-container:hover .done-task-btn {
         opacity: 1;

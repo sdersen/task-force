@@ -13,7 +13,10 @@
         <span>Created</span><span><?= $task['created_at']; ?></span>
         <span>Completed</span><span><?= $task['completed_at']; ?></span>
 
+        <form action="app/tasks/uncomplete.php" method="post">
+            <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
+            <button type="submit" class="btn btn-primary">Mark as undone</button>
+        </form>
     </article>
-
 <?php endforeach; ?>
 <?php require __DIR__ . '/views/footer.php'; ?>

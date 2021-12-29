@@ -49,7 +49,7 @@
                         </form>
 
 
-                        <div class="edit-list-container hidden">
+                        <div class="edit-list-container ">
                             <form action="app/lists/update.php" method="post">
                                 <div class="mb-3">
                                     <label for="title">Title</label>

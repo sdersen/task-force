@@ -19,15 +19,14 @@ if (isset($_FILES['upload'])) {
         $_SESSION['image_errors'][] = 'Please choose an image';
         // redirect('/profile.php');
     };
-    //Det printar sorry wrong format ALLTID, varför?
-    if ($upload['type'] !== 'image/jpeg') {
+    if (!in_array($upload['type'], ['image/jpeg', 'image/png'])) {
         $_SESSION['image_errors'] = [];
         $_SESSION['image_errors'][] = 'Sorry, not a valid file format. Try .png or .jpeg';
         redirect('/profile.php');
     };
     if ($upload['size'] > 16000000) {
         $_SESSION['image_errors'] = [];
-        $_SESSION['image_errors'][] = 'Sorry, to big';
+        $_SESSION['image_errors'][] = 'Sorry, too big';
         redirect('/profile.php');
     } else {
         move_uploaded_file($upload['tmp_name'], $destination);
@@ -41,7 +40,7 @@ if (isset($_FILES['upload'])) {
         $statement->execute();
 
         $_SESSION['user']['image'] = $path;
-        
+
         $_SESSION['confirm'] = 'Upload complete';
         redirect('/profile.php');
     };
