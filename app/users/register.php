@@ -11,18 +11,28 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 
     $databaseEmail = checkEmailInDatabase($database, $email);
 
-    if ($email === '') {
+    if ($email === '' || $name === '') {
         $_SESSION['errors'] = [];
-        $_SESSION['errors'][] = 'The email field is missing.';
+        $_SESSION['errors'][] = 'Please enter name and emailadress.';
+        redirect('/register.php');
+    }
+    if ($_POST['password'] === '') {
+        $_SESSION['errors'] = [];
+        $_SESSION['errors'][] = 'You must set a password.';
+        redirect('/register.php');
+    }
+    if (strlen($_POST['password'])  < 6) {
+        $_SESSION['errors'] = [];
+        $_SESSION['errors'][] = 'Your password must be 6 characters or more.';
         redirect('/register.php');
     }
     // Är det ok att filter_validate är här?
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-        $_SESSION['errors'][] = 'Not valid email.';
+        $_SESSION['errors'][] = 'This is not valid email, please try again.';
         redirect('/register.php');
     }
     if ($databaseEmail) {
-        $_SESSION['errors'][] = 'The email alredy registerd.';
+        $_SESSION['errors'][] = 'The email is allredy registerd.';
         redirect('/register.php');
     } else {
         $image = 'app/users/uploads/profile-placeholder-img.jpg';
@@ -35,6 +45,16 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // var_dump($user);
+
+        // $_SESSION['user'] = [
+        //     'id' => $user['id'],
+        //     'name' => $user['name'],
+        //     'email' => $user['email'],
+        //     'image' => $user['image']
+        // ];
+        // var_dump($_SESSION['user']);
         redirect('/');
     };
 };

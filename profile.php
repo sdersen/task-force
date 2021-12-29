@@ -1,6 +1,6 @@
-<!-- La in update istf autoload här för att nå update variabeln $updateCompleate -->
-<?php require __DIR__ . '/app/users/update.php'; ?>
-<?php require __DIR__ . '/views/header.php'; ?>
+<?php
+require __DIR__ . '/app/autoload.php';
+require __DIR__ . '/views/header.php'; ?>
 
 <article class="profile-page">
     <!-- Behöver ett meddelande att uppdatering lyckats... -->
@@ -19,22 +19,45 @@
         unset($_SESSION['update_errors']);
     endif;
     ?>
+    <?php
+    if (isset($_SESSION['confirm'])) : ?>
+        <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
+    <?php unset($_SESSION['confirm']);
+    endif;
+    ?>
     <article class="update-profile-container ">
         <h3>Update information</h3>
 
-        <form action="app/users/update.php" method="post">
+        <form action="app/users/update-email.php" method="post">
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="New email" required>
+                <input class="form-control" type="email" name="email" id="email" placeholder="New email">
                 <small class="form-text">Please provide your new email address.</small>
             </div>
+            <button type="submit" class="btn btn-primary">Update email</button>
+        </form>
+        <?php
+        if (isset($_SESSION['password_errors'])) :
+            foreach ($_SESSION['password_errors'] as $error) : ?>
+                <p class="alert alert-danger"><?= $error ?></p>
+        <?php endforeach;
+            unset($_SESSION['password_errors']);
+        endif;
+        ?>
+        <?php
+        if (isset($_SESSION['password_updated'])) : ?>
+            <p class="alert alert-success"><?php echo $_SESSION['password_updated'] ?></p>
+        <?php unset($_SESSION['password_updated']);
+        endif;
+        ?>
+        <form action="app/users/update-password.php" method="post">
 
             <div class="mb-3">
                 <label for="new-password">Password</label>
-                <input class="form-control" type="password" name="password" id="password" placeholder="New password" required>
-                <small class="form-text">Please provide your new password (passphrase). Min X characters.</small>
+                <input class="form-control" type="password" name="password" id="password" placeholder="New password">
+                <small class="form-text">Please provide your new password (passphrase). Min 6 characters.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Update password</button>
         </form>
     </article>
 
@@ -42,14 +65,20 @@
         <?php
         if (isset($_SESSION['image_errors'])) :
             foreach ($_SESSION['image_errors'] as $error) : ?>
-                <p><?= $error ?></p>
+                <p class="alert alert-danger"><?= $error ?></p>
         <?php endforeach;
             unset($_SESSION['image_errors']);
         endif;
         ?>
+        <?php
+        if (isset($_SESSION['confirm'])) : ?>
+            <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
+        <?php unset($_SESSION['confirm']);
+        endif;
+        ?>
         <div class="mb-3">
             <label class="form-label" for="upload">Upload profile image</label>
-            <input class="form-control" type="file" accept="image/png, image/jpeg" name="upload" id="upload">
+            <input class="form-control" type="file" name="upload" id="upload">
             <input type="hidden" id="upload" name="upload" value="<?= $_SESSION['user']['id'] ?>">
             <small class="form-text">Choose your image.</small>
         </div>

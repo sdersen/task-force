@@ -120,7 +120,7 @@
                 </article>
             <?php endforeach; ?>
         </section>
-        <a href="/history.php">History</a>
+        <a href="/history.php">Compleated tasks</a>
 
     <?php endif; ?>
 </main>

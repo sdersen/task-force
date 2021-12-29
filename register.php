@@ -7,7 +7,7 @@
     <?php
     if (isset($_SESSION['errors'])) :
         foreach ($_SESSION['errors'] as $error) : ?>
-            <p><?= $error ?></p>
+            <p class="alert alert-danger"><?= $error ?></p>
     <?php endforeach;
         unset($_SESSION['errors']);
     endif;
@@ -28,7 +28,7 @@
         <div class="mb-3">
             <label for="password">Password</label>
             <input class="form-control" type="password" name="password" id="password" required>
-            <small class="form-text">Please provide the your password (passphrase). Min X characters.</small>
+            <small class="form-text">Please provide the your password (passphrase) Min 6 characters.</small>
         </div>
 
         <button type="submit" class="btn btn-primary">Register new user</button>
