@@ -4,7 +4,7 @@
 /* Tasks ------------------------------------ */
 
 path {
-    fill: rgb(169, 172, 172);
+    fill: rgb(62, 63, 63);
 }
 svg {
     height: 25px;
@@ -19,30 +19,31 @@ svg {
 }
 .task-container {
     border: rgb(190, 189, 189) 1px solid;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 15px;
     max-width: 700px;
 }
-.task-container h3 {
+/* .task-container h3 {
     margin-top: 5px;
-}
+} */
 .edit-task-btn {
     background-color: transparent;
     border: none;
     height: 20px;
-    transition: ease 0.5s;
 }
 .add-list-btn {
     background-color: transparent;
     border: none;
     height: 20px;
-    transition: ease 0.5s;
 }
 .select-list-dropdown {
     max-width: 200px;
     height: 35px;
+}
+.bold-info-text {
+    font-weight: bold;
 }
 .flex-container {
     display: flex;
@@ -56,8 +57,13 @@ svg {
     padding: 15px;
     max-width: 700px;
 }
+.list-btn-container {
+    display: flex;
+}
 @media screen and (min-width: 992px) {
-   
+    path {
+        fill: rgb(169, 172, 172);
+    }
     .task-container:hover path {
         fill: rgb(54, 54, 54);
     }

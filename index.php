@@ -1,5 +1,4 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
-<!-- Tog bort autoload och la denna för att kunna använda tasks -->
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <main>
@@ -15,12 +14,12 @@
                 <div class="mb-3">
                     <label for="title">Title</label>
                     <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" required>
-                    <small class="form-text">Please enter a titl for your task.</small>
+                    <small class="form-text">Please enter a title for your task.</small>
                 </div>
                 <div class="mb-3">
                     <label for="description">Description</label>
                     <input class="form-control" type="text" name="description" id="description">
-                    <small class="form-text">Please provide the your description.</small>
+                    <small class="form-text">Describe your task.</small>
                 </div>
                 <div class="mb-3">
                     <label for="date">Dedline</label>
@@ -33,7 +32,6 @@
         </section>
         <section>
             <h3>Sort by:</h3>
-            <!-- Kolla på att göra en dropdovn ist. -->
             <form action="app/tasks/sort.php" method="post">
                 <label for="Sort">Sort by</label>
                 <select class="form-control" name="sort" id="sort">
@@ -54,7 +52,7 @@
             <?php foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
                     <div class="headline-container">
-                        <h3 class="task-title"><?= htmlspecialchars($task['title']); ?></h3>
+                        <h4 class="task-title"><?= htmlspecialchars($task['title']); ?></h4>
                         <!-- EDIT BTNS ---------------------------------------- -->
                         <div class="edit-btn-container">
                             <button class="edit-task-btn">
@@ -70,12 +68,12 @@
                         </div>
                     </div>
                     <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
-                    <span>Deadline: </span><span><?= htmlspecialchars($task['deadline_at']); ?></span><span> </span>
-                    <span>Created: </span><span><?= $task['created_at']; ?></span>
+                    <span class="bold-info-text">Deadline: </span><span><?= htmlspecialchars($task['deadline_at']); ?></span><span> </span>
+                    <span class="bold-info-text">Created: </span><span><?= $task['created_at']; ?></span>
 
                     <?php
                     if ($task['list_id']) : ?>
-                        <span>Belongs to list: </span><span><?php echo printListForTask($task['id'], $database) ?></span>
+                        <span class="bold-info-text">Belongs to list: </span><span><?php echo printListForTask($task['id'], $database) ?></span>
                     <?php endif; ?>
                     <!-- EDIT CONTAINER -------------------------------------------------------- -->
                     <div class="edit-container hidden">
@@ -122,7 +120,7 @@
                         </form>
                     </div>
                     <form action="app/tasks/done.php" method="POST">
-                        <button class="btn btn-success done-task-btn" type="submit">Done</button>
+                        <button class="btn btn-outline-success done-task-btn" type="submit">Done</button>
                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                     </form>
 

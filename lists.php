@@ -1,3 +1,4 @@
+<!-- Behöver jag verkligen denna?? -->
 <?php require __DIR__ . '/app/lists/getLists.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
@@ -12,7 +13,7 @@
                 <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" required>
                 <small class="form-text">Please enter a title for your list.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Create list</button>
+            <button type="submit" class="btn btn-outline-primary">Create list</button>
         </form>
         <?php
         if (isset($_SESSION['user'])) : ?>
@@ -56,18 +57,19 @@
                                     <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title">
                                     <small class="form-text">Please enter a title for your task.</small>
                                 </div>
-
                                 <input type="hidden" id="id" name="id" value="<?= $list['id'] ?>">
                                 <button type="submit" class="btn btn-primary">Update Title</button>
                             </form>
-                            <form action="app/lists/delete.php" method="post">
-                                <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
-                                <button type="submit" class="btn btn-primary">Delete List</button>
-                            </form>
-                            <form action="app/lists/delete-list-tasks.php" method="post">
-                                <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
-                                <button type="submit" class="btn btn-primary">Delete list including tasks</button>
-                            </form>
+                            <div class="list-btn-container">
+                                <form action="app/lists/delete.php" method="post">
+                                    <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
+                                    <button type="submit" class="btn btn-primary">Delete List</button>
+                                </form>
+                                <form action="app/lists/delete-list-tasks.php" method="post">
+                                    <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
+                                    <button type="submit" class="btn btn-primary">Delete list incl tasks</button>
+                                </form>
+                            </div>
                         </div>
                     </article>
                 <?php endforeach; ?>

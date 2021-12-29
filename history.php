@@ -15,7 +15,7 @@
 
         <form action="app/tasks/uncomplete.php" method="post">
             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
-            <button type="submit" class="btn btn-primary">Mark as undone</button>
+            <button type="submit" class="btn btn-outline-secondary btn-sm">Mark as undone</button>
         </form>
     </article>
 <?php endforeach; ?>

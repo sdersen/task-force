@@ -16,5 +16,8 @@ button {
     width: 20px;
     margin-bottom: 10px;
 }
+.btn-outline-primary {
+    border: brown 1px solid;
+}
 @media screen and (min-width: 992px) {
 }
