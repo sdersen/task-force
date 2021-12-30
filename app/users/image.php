@@ -8,7 +8,8 @@ var_dump($_FILES['upload']);
 
 if (isset($_FILES['upload'])) {
     $upload = $_FILES['upload'];
-    $upload['name'] = $_POST['upload'] . '-' . date('Y-m-d-') . $upload['name'];
+    // ändrade till post hidden_upload för att kolla om det blev bättre
+    $upload['name'] = $_POST['hidden_upload'] . '-' . date('Y-m-d-') . $upload['name'];
     $destination = __DIR__ . '/uploads/' . $upload['name'];
 
     var_dump($upload['type']);

@@ -1,9 +1,11 @@
 // Toggle create task on index.php ********************
-const openCreateTaskBtn = document.querySelector('.open-create-task-btn');
 const createTaskContainer = document.querySelector('.create-task-container');
-openCreateTaskBtn.addEventListener('click', () => {
-    createTaskContainer.classList.toggle('hidden');
-});
+if (createTaskContainer) {
+    const openCreateTaskBtn = document.querySelector('.open-create-task-btn');
+    openCreateTaskBtn.addEventListener('click', () => {
+        createTaskContainer.classList.toggle('hidden');
+    });
+}
 
 // Toggles edit task field on index.php ********************
 const taskContainers = document.querySelectorAll('.task-container');
@@ -39,14 +41,3 @@ listContainers.forEach((listContainer) => {
         console.log('du har klickat');
     });
 });
-
-// Toggle update profile on profile.php ********************
-// const updateProfileBtn = document.querySelector('.update-profile-btn');
-// const updateProfileContainer = document.querySelector(
-//     '.update-profile-container'
-// );
-
-// updateProfileBtn.addEventListener('click', () => {
-//     updateProfileContainer.classList.toggle('hidden');
-//     console.log('hej');
-// });

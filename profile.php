@@ -79,10 +79,9 @@ require __DIR__ . '/views/header.php'; ?>
         <div class="mb-3">
             <label class="form-label" for="upload">Upload profile image</label>
             <input class="form-control" type="file" accept=".png, .jpeg" name="upload" id="upload">
-            <input type="hidden" id="upload" name="upload" value="<?= $_SESSION['user']['id'] ?>">
+            <input type="hidden" id="hidden_upload" name="hidden_upload" value="<?= $_SESSION['user']['id'] ?>">
             <small class="form-text">Choose your image.</small>
         </div>
-
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
 </article>

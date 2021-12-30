@@ -55,6 +55,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         //     'image' => $user['image']
         // ];
         // var_dump($_SESSION['user']);
+        $_SESSION['confirm'] = 'Registry successfull, you can now login!';
         redirect('/');
     };
 };

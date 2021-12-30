@@ -2,8 +2,39 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <main>
-    <h1><?php echo $config['title']; ?></h1>
-    <p>This is the home pageeeee.</p>
+    <?php
+    if (!isset($_SESSION['user'])) : ?>
+        <h1><?php echo $config['title']; ?></h1>
+        <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
+        <button class="btn btn-lg btn-primary"><a href="/register.php"></a>Register</button>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 advantage-item">
+                    <h3>One big advantage</h3>
+                    <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
+                </div>
+                <div class="col-12 col-md-6 advantage-item">
+                    <img class="advantage-img" src="/assets/images/task.png" alt="">
+                </div>
+            </div>
+            <div class="row second-row">
+                <div class="col-12 col-md-5 advantage-item">
+                    <h3>Next big advantage</h3>
+                    <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
+                </div>
+                <div class="col-12 col-md-6 advantage-item">
+                    <img class="advantage-img" src="/assets/images/list.png" alt="">
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php
+    if (isset($_SESSION['confirm'])) : ?>
+        <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
+    <?php unset($_SESSION['confirm']);
+    endif;
+    ?>
     <?php
     if (isset($_SESSION['user'])) : ?>
         <p style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></p>
