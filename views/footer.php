@@ -1,5 +1,5 @@
 <footer>
-    <img class="footer-logo" src="/assets/images/check-double-solid.svg" alt="">
+    <!-- <img class="footer-logo" src="/assets/images/check-double-solid.svg" alt=""> -->
     <h5>TASK FORCE</h5>
     <div class="adress-container">
         <p>Norra allégatan 6</p>

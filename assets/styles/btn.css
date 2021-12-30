@@ -16,8 +16,13 @@ button {
     width: 20px;
     margin-bottom: 10px;
 }
-.btn-outline-primary {
-    border: brown 1px solid;
+.btn-danger{
+    background-color: var(--dark-blue);
+    border: var(--dark-blue);
+}
+.btn-primary{
+    background-color: var(--minion);
+    border: var(--minion);
 }
 @media screen and (min-width: 992px) {
 }

@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<article>
+<article class="history-page">
     <h1>History</h1>
     <p>Here you can se all your completed tasks...</p>
 </article>
@@ -9,9 +9,9 @@
     <article class="task-container">
         <h3 class="task-title"><?= $task['title']; ?></h3>
         <p class="task-description"><?= $task['description']; ?></p>
-        <span>Deadline</span><span><?= $task['deadline_at']; ?></span>
-        <span>Created</span><span><?= $task['created_at']; ?></span>
-        <span>Completed</span><span><?= $task['completed_at']; ?></span>
+        <span>Deadline: </span><span><?= $task['deadline_at']; ?></span>
+        <span>Created: </span><span><?= $task['created_at']; ?></span>
+        <span>Completed: </span><span><?= $task['completed_at']; ?></span>
 
         <form action="app/tasks/uncomplete.php" method="post">
             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">

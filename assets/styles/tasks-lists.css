@@ -7,7 +7,7 @@ path {
     fill: rgb(62, 63, 63);
 }
 svg {
-    height: 25px;
+    height: 20px;
 }
 .headline-container {
     display: flex;
@@ -25,9 +25,12 @@ svg {
     padding: 15px;
     max-width: 700px;
 }
-/* .task-container h3 {
-    margin-top: 5px;
-} */
+.task-title{
+    margin-bottom: 0px;
+}
+.task-description{
+    margin-bottom: 0px;
+}
 .edit-task-btn {
     background-color: transparent;
     border: none;
@@ -57,7 +60,7 @@ svg {
     padding: 15px;
     max-width: 700px;
 }
-.list-btn-container {
+.flex-btn-container {
     display: flex;
 }
 @media screen and (min-width: 992px) {

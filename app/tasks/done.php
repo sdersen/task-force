@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['done_id'])) {
+    $redirect = $_POST['redirect'];
     $id = $_POST['done_id'];
     $doneDate = date("Y-m-d");
 
@@ -16,5 +17,9 @@ if (isset($_POST['done_id'])) {
 
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
-    redirect('/');
+    if ($redirect) {
+        redirect('/lists.php');
+    } else {
+        redirect('/');
+    }
 }
