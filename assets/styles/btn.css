@@ -6,23 +6,41 @@ button {
     width: 52px;
     border-radius: 50%;
     border: none;
-    background-color: #2d6ffc;
+    background-color: var(--orange);
     color: white;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.2rem;
 }
 .btn-icon {
     height: 20px;
     width: 20px;
     margin-bottom: 10px;
 }
-.btn-danger{
-    background-color: var(--dark-blue);
-    border: var(--dark-blue);
+.btn-danger {
+    background-color: var(--blue);
+    border: var(--blue);
 }
-.btn-primary{
-    background-color: var(--minion);
-    border: var(--minion);
+.btn-danger:hover {
+    background-color: var(--blue-ligth);
+    border: var(--blue-ligth);
+}
+.btn-primary {
+    background-color: var(--orange);
+    border: var(--orange);
+}
+.btn-primary:hover {
+    background-color: var(--orange-ligth);
+    border: var(--orange-ligth);
+}
+.btn-secondary {
+    background-color: var(--green);
+    border: var(--green);
+}
+.btn-secondary:hover {
+    background-color: var(--green-light);
+    border: var(--green-light);
+}
+.create-list-btn{
+    margin-bottom: 20px;
 }
 @media screen and (min-width: 992px) {
 }

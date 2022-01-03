@@ -9,18 +9,22 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     $name = trim(filter_var($_POST['name']));
     $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    //checks if user allredy exists
     $databaseEmail = checkEmailInDatabase($database, $email);
 
+    // If email or name is not set
     if ($email === '' || $name === '') {
         $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Please enter name and emailadress.';
         redirect('/register.php');
     }
+    //If password if not given
     if ($_POST['password'] === '') {
         $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'You must set a password.';
         redirect('/register.php');
     }
+    //If password is not 6 characters or more
     if (strlen($_POST['password'])  < 6) {
         $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Your password must be 6 characters or more.';
@@ -31,10 +35,12 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         $_SESSION['errors'][] = 'This is not valid email, please try again.';
         redirect('/register.php');
     }
+    //Checks if user allredy exists
     if ($databaseEmail) {
         $_SESSION['errors'][] = 'The email is allredy registerd.';
         redirect('/register.php');
     } else {
+        // Gives that new user a default profile-image
         $image = 'app/users/uploads/profile-placeholder-img.jpg';
 
         $statement = $database->prepare('INSERT INTO users (name, email, password, image) VALUES (:name, :email, :password, :image);');
@@ -46,15 +52,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        // var_dump($user);
-
-        // $_SESSION['user'] = [
-        //     'id' => $user['id'],
-        //     'name' => $user['name'],
-        //     'email' => $user['email'],
-        //     'image' => $user['image']
-        // ];
-        // var_dump($_SESSION['user']);
+        //Lets the user know that th e registration was successfull
         $_SESSION['confirm'] = 'Registry successfull, you can now login!';
         redirect('/');
     };

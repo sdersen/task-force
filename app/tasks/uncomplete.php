@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+// Sets a done-task as uncomplete.
+
 $id = $_POST['id'];
 
 $statement = $database->prepare(

@@ -1,6 +1,5 @@
 <footer>
-    <!-- <img class="footer-logo" src="/assets/images/check-double-solid.svg" alt=""> -->
-    <h5>TASK FORCE</h5>
+    <img class="footer-logo" src="/assets/images/task_logo.png" alt="">
     <div class="adress-container">
         <p>Norra allégatan 6</p>
         <p>411 01 Göteborg</p>

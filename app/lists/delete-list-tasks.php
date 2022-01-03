@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+// Deletes a list and all its tasks.
+
 $id = $_POST['delete_id'];
 
 $statement = $database->prepare(

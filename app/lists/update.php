@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+// Updates title on task
+
 if (isset($_POST['title'])) {
     $title = trim(filter_var($_POST['title'], FILTER_SANITIZE_STRING));
     $id = $_POST['id'];

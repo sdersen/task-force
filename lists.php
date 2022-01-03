@@ -3,7 +3,8 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article class="list-page">
-    <h1>Your Lists, woooo</h1>
+    <h1>Your lists</h1>
+    <p>Create your own list and ass tasks as you go along...</p>
 
     <section class="create-list-container">
 
@@ -13,7 +14,7 @@
                 <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" required>
                 <small class="form-text">Please enter a title for your list.</small>
             </div>
-            <button type="submit" class="btn btn-danger">Create list</button>
+            <button type="submit" class="btn btn-danger create-list-btn">Create list</button>
         </form>
         <?php
         if (isset($_SESSION['user'])) : ?>
@@ -31,15 +32,15 @@
                             <div class="task-container">
                                 <h5 class="task-title"><?= htmlspecialchars($task['title']); ?></h5>
                                 <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
-                                <span>Deadline: </span><span><?= $task['completed_at']; ?></span>
+                                <span>Deadline: </span><span><?php echo htmlspecialchars($task['deadline_at']);?></span>
                                 <div class="flex-btn-container">
                                     <form action="app/tasks/done.php" method="POST">
-                                        <button class="btn btn-primary done-task-btn" type="submit">Task Done</button>
+                                        <button class="btn btn-sm btn-primary done-task-btn" type="submit">Task Done</button>
                                         <input type="hidden" id="redirect" name="redirect" value="1">
                                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                                     </form>
                                     <form action="app/lists/remove-task.php" method="POST">
-                                        <button class="btn btn-primary done-list-btn" type="submit">remove task from list</button>
+                                        <button class="btn btn-sm btn-primary done-list-btn" type="submit">Remove from list</button>
                                         <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
                                     </form>
                                 </div>
@@ -69,7 +70,7 @@
                                 </form>
                                 <form action="app/lists/delete-list-tasks.php" method="post">
                                     <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
-                                    <button type="submit" class="btn btn-danger">Delete list incl tasks</button>
+                                    <button type="submit" class="btn btn-outline-danger">Delete list incl tasks</button>
                                 </form>
                             </div>
                         </div>

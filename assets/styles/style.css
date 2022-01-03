@@ -2,10 +2,15 @@
 
 :root {
     --light-green: #e6ebe0;
-    --red: #ed6a5a;
-    --timber-dark: #777972;
-    --middle-blue: #23305c;
-    --dark-blue: #0e1a40;
+    --orange: #ef8354;
+    --orange-ligth: #ec9f7e;
+
+    --green: #5ca4a9;
+    --green-light: #85c9ce;
+
+    --blue: #2d3142;
+    --blue-ligth: #586081;
+
     --candy-pink: #dd7373;
     --minion: #ead94c;
 }
@@ -22,15 +27,12 @@ main {
 span {
     font-size: 0.8rem;
 }
-.advantage-item{
+.advantage-item {
     margin: 10px;
     margin-top: 20px;
 }
 .advantage-img {
     width: 100%;
-}
-.second-row{
-    
 }
 .login-page {
     margin-top: 10%;
@@ -75,7 +77,6 @@ footer p {
 }
 .footer-logo {
     height: 35px;
-    margin: 20px;
 }
 .some-icon {
     height: 35px;

@@ -3,23 +3,22 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
-var_dump($_FILES['upload']);
 
+// Uploads a image to a profile
 
 if (isset($_FILES['upload'])) {
     $upload = $_FILES['upload'];
-    // ändrade till post hidden_upload för att kolla om det blev bättre
+    // Sets filename to "user_id - date - name"
     $upload['name'] = $_POST['hidden_upload'] . '-' . date('Y-m-d-') . $upload['name'];
     $destination = __DIR__ . '/uploads/' . $upload['name'];
 
-    var_dump($upload['type']);
-
-    //Funkar inte alls
+    // If no file is added, print this error
     if ($upload['name'] === '') {
         $_SESSION['image_errors'] = [];
         $_SESSION['image_errors'][] = 'Please choose an image';
-        // redirect('/profile.php');
+        redirect('/profile.php');
     };
+    //If fomat is not the given print this error
     if (!in_array($upload['type'], ['image/jpeg', 'image/png'])) {
         $_SESSION['image_errors'] = [];
         $_SESSION['image_errors'][] = 'Sorry, not a valid file format. Try .png or .jpeg';
@@ -42,6 +41,7 @@ if (isset($_FILES['upload'])) {
 
         $_SESSION['user']['image'] = $path;
 
+        // Prints a confiramtion that the image upload was ok
         $_SESSION['confirm'] = 'Upload complete';
         redirect('/profile.php');
     };

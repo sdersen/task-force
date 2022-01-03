@@ -11,6 +11,4 @@ if (isset($_SESSION['tasks'])) {
     unset($_SESSION['tasks']);
 };
 
-// session_destroy();
-
 redirect('/index.php');

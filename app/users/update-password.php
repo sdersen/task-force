@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+//updatdes user password
+
 if (isset($_POST['password'])) {
     $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $id = $_SESSION['user']['id'];
 
+    //checks that password has 6 or more characters
     if (strlen($_POST['password'])  < 6) {
         $_SESSION['password_errors'] = [];
         $_SESSION['password_errors'][] = 'Your password must be 6 characters or more.';
@@ -18,7 +21,8 @@ if (isset($_POST['password'])) {
         $statement->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
 
         $statement->execute();
-        // $user = $statement->fetch(PDO::FETCH_ASSOC);
+        // informs user that change is made.
+
         $_SESSION['password_updated'] = 'Password updated';
         redirect('/profile.php');
     };

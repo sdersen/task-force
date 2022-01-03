@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+//A user login
+
 if (isset($_POST['email'], $_POST['password'])) {
-    // filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $email = trim(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL));
+
     $statement = $database->prepare('SELECT * FROM users WHERE email =:email');
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+    //If the email dosent exist
     if (!$user) {
         $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Sorry, no record of this email';
 
         redirect('/login.php');
     }
+    // Checks if user email and password match
     if (password_verify($_POST['password'], $user['password'])) {
         unset($user['password']);
 

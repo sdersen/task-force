@@ -34,7 +34,7 @@ require __DIR__ . '/views/header.php'; ?>
                 <input class="form-control" type="email" name="email" id="email" placeholder="New email">
                 <small class="form-text">Please provide your new email address.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Update email</button>
+            <button type="submit" class="btn btn-secondary">Update email</button>
         </form>
         <?php
         if (isset($_SESSION['password_errors'])) :
@@ -57,7 +57,7 @@ require __DIR__ . '/views/header.php'; ?>
                 <input class="form-control" type="password" name="password" id="password" placeholder="New password">
                 <small class="form-text">Please provide your new password (passphrase). Min 6 characters.</small>
             </div>
-            <button type="submit" class="btn btn-primary">Update password</button>
+            <button type="submit" class="btn btn-secondary">Update password</button>
         </form>
     </article>
 
@@ -82,7 +82,7 @@ require __DIR__ . '/views/header.php'; ?>
             <input type="hidden" id="hidden_upload" name="hidden_upload" value="<?= $_SESSION['user']['id'] ?>">
             <small class="form-text">Choose your image.</small>
         </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="submit" class="btn btn-secondary">Upload</button>
     </form>
 </article>
 

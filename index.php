@@ -3,9 +3,15 @@
 
 <main>
     <?php
+    if (isset($_SESSION['confirm'])) : ?>
+        <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
+    <?php unset($_SESSION['confirm']);
+    endif;
+    ?>
+    <?php
     if (!isset($_SESSION['user'])) : ?>
         <h1><?php echo $config['title']; ?></h1>
-        <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
+        <p>Organize nnn everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
         <button class="btn btn-lg btn-primary"><a href="/register.php"></a>Register</button>
 
         <div class="container">
@@ -29,15 +35,11 @@
             </div>
         </div>
     <?php endif; ?>
-    <?php
-    if (isset($_SESSION['confirm'])) : ?>
-        <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
-    <?php unset($_SESSION['confirm']);
-    endif;
-    ?>
+
     <?php
     if (isset($_SESSION['user'])) : ?>
-        <p style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></p>
+        <h3 style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></h3>
+        <p>Start structuring your days, weeks, garden, home or anyting else you would like! Get started and add your tasks bellow.</p>
         <button class="open-create-task-btn">+</button>
         <!-- CREATE TASK------------------------------------- -->
         <section class="create-task-container hidden">
@@ -62,7 +64,7 @@
 
         </section>
         <section>
-            <h3>Sort by:</h3>
+            <!-- <h3>Sort by:</h3>
             <form action="app/tasks/sort.php" method="post">
                 <label for="Sort">Sort by</label>
                 <select class="form-control" name="sort" id="sort">
@@ -71,7 +73,7 @@
                     <option class="form-control" value="3">Title</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Sort</button>
-            </form>
+            </form> -->
             <!-- <form action="app/tasks/sort.php" method="post">
                 <input type="hidden" id="poo" name="poo" value="">
                 <button type="submit" class="btn btn-primary">created</button>
@@ -99,7 +101,7 @@
                         </div>
                     </div>
                     <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
-                    <span class="bold-info-text">Deadline: </span><span><?= htmlspecialchars($task['deadline_at']); ?></span><span> </span>
+                    <span class="bold-info-text">Deadline: </span><span><?php echo htmlspecialchars($task['deadline_at']); ?></span><span> </span>
                     <span class="bold-info-text">Created: </span><span><?= $task['created_at']; ?></span>
 
                     <?php
@@ -151,7 +153,7 @@
                         </form>
                     </div>
                     <form action="app/tasks/done.php" method="POST">
-                        <button class="btn btn-sm btn-outline-success done-task-btn" type="submit">Done</button>
+                        <button class="btn btn-sm btn-primary done-task-btn" type="submit">Done</button>
                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                     </form>
 

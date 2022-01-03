@@ -12,7 +12,7 @@ function isUserLoggedIn()
 {
     $loggedIn = isset($_SESSION['user']);
     return $loggedIn;
-};
+}
 
 function getTasks($id, $database)
 {

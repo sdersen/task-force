@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+// Creates a task
+
 if (isset($_POST['title'])) {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
     $deadline = $_POST['date'];
+    //user id
     $id = $_SESSION['user']['id'];
     $createdDate = date("Y-m-d");
 

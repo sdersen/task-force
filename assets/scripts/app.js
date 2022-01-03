@@ -10,21 +10,23 @@ if (createTaskContainer) {
 // Toggles edit task field on index.php ********************
 const taskContainers = document.querySelectorAll('.task-container');
 
-taskContainers.forEach((taskContainer) => {
-    const editTaskBtn = taskContainer.querySelector('.edit-task-btn');
-    const addListForm = taskContainer.querySelector('.list-form');
-    const addListBtn = taskContainer.querySelector('.add-list-btn');
-    const taskEditField = taskContainer.querySelector('.edit-container');
+if (taskContainers) {
+    taskContainers.forEach((taskContainer) => {
+        const editTaskBtn = taskContainer.querySelector('.edit-task-btn');
+        const addListForm = taskContainer.querySelector('.list-form');
+        const addListBtn = taskContainer.querySelector('.add-list-btn');
+        const taskEditField = taskContainer.querySelector('.edit-container');
 
-    editTaskBtn.addEventListener('click', () => {
-        taskEditField.classList.toggle('hidden');
-    });
+        editTaskBtn.addEventListener('click', () => {
+            taskEditField.classList.toggle('hidden');
+        });
 
-    addListBtn.addEventListener('click', () => {
-        addListForm.classList.toggle('hidden');
-        console.log('add list');
+        addListBtn.addEventListener('click', () => {
+            addListForm.classList.toggle('hidden');
+            console.log('add list');
+        });
     });
-});
+}
 
 // Toggles edit list field on lists.php ********************
 const listContainers = document.querySelectorAll('.list-container');
