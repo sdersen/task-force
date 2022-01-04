@@ -1,4 +1,4 @@
-INSERT MANDATORY GIF
+<img src="https://giphy.com/gifs/bachelorinparadise-angry-frustrated-py2UYwTIX5SXm" width="100%">
 
 # Task Force
 
