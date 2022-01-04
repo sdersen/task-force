@@ -1,12 +1,28 @@
-INSERT MANDATORY GIF
+<img src="https://media1.giphy.com/media/py2UYwTIX5SXm/giphy.gif?cid=ecf05e476vxqzc7bh90gvb2bjstuncdilztpwlmj7fbnxmjh&rid=giphy.gif&ct=g" width="100%">
 
-# Project Title
+# Task Force
 
-Text about the project and why it exists. This would also be a great place to link the project online.
+A simpel to-do app as a school project. The app allows the user to:
+
+- Create an account.
+- Login/Logout.
+- Edit account email and password.
+- Upload a profile image.
+- Create new tasks with title, description and deadline date. Edit, delete  and mark them as done.
+- Mark tasks as uncompleted.
+- Create new task lists with title.
+- Edit and delete my task lists.
+- Delete my task lists along with all tasks.
+- Add a task to a list.
+- View all tasks.
+- View all tasks within a list.
+- View all tasks which should be completed today.
+
+- **Extra:** I'm able to remove a task from a list.
 
 # Installation
 
-Add the installation instructions.
+Clone the repo and open a localhost.
 
 # Code Review
 
