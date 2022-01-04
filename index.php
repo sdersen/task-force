@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-5 advantage-item">
-                    <h3>One big advantage</h3>
+                    <h3>Manage task all your tasks</h3>
                     <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
                 </div>
                 <div class="col-12 col-md-6 advantage-item">
@@ -27,7 +27,7 @@
             </div>
             <div class="row second-row">
                 <div class="col-12 col-md-5 advantage-item">
-                    <h3>Next big advantage</h3>
+                    <h3>Get organized with lists</h3>
                     <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
                 </div>
                 <div class="col-12 col-md-6 advantage-item">
