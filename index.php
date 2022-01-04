@@ -12,8 +12,9 @@
     if (!isset($_SESSION['user'])) : ?>
         <h1><?php echo $config['title']; ?></h1>
         <p>Organize nnn everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
-        <button class="btn btn-lg btn-primary"><a href="/register.php"></a>Register</button>
-
+        <form action="/register.php">
+            <button class="btn btn-lg btn-primary register-btn">Register</button>
+        </form>
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-5 advantage-item">

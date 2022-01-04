@@ -45,3 +45,9 @@ a {
         margin-bottom: 20px;
     }
 }
+
+@media screen and (min-width: 572px) {
+    .nav-logo {
+        margin-left: 20px;
+    }
+}

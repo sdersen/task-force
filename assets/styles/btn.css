@@ -1,6 +1,12 @@
 button {
     margin: 5px;
 }
+.register-btn {
+    width: 200px;
+    height: 50px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
 .open-create-task-btn {
     height: 52px;
     width: 52px;
@@ -39,7 +45,7 @@ button {
     background-color: var(--green-light);
     border: var(--green-light);
 }
-.create-list-btn{
+.create-list-btn {
     margin-bottom: 20px;
 }
 @media screen and (min-width: 992px) {
