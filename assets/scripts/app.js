@@ -6,6 +6,15 @@ if (createTaskContainer) {
         createTaskContainer.classList.toggle('hidden');
     });
 }
+// Toggle create list on lists.php ********************
+const createListContainer = document.querySelector('.create-list-container');
+if (createListContainer) {
+    const openCreateListBtn = document.querySelector('.open-create-list-btn');
+    openCreateListBtn.addEventListener('click', () => {
+        console.log('öppna lista');
+        createListContainer.classList.toggle('hidden');
+    });
+}
 
 // Toggles edit task field on index.php ********************
 const taskContainers = document.querySelectorAll('.task-container');

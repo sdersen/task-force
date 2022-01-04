@@ -39,6 +39,11 @@ svg {
     border: none;
     height: 20px;
 }
+.edit-list-btn {
+    background-color: transparent;
+    border: none;
+    height: 20px;
+}
 .add-list-btn {
     background-color: transparent;
     border: none;
