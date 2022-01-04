@@ -7,14 +7,14 @@ function redirect(string $path)
     header("Location: ${path}");
     exit;
 }
-
+//Checks if a user is logged in (if a session has started).
 function isUserLoggedIn()
 {
     $loggedIn = isset($_SESSION['user']);
     return $loggedIn;
 }
-
-function getTasks($id, $database)
+// Gets all the tasks from a specific user.
+function getTasks($id, $database): array
 {
     $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
@@ -22,7 +22,8 @@ function getTasks($id, $database)
     $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $tasks;
 }
-function getcompletedTasks($id, $database)
+//Gets all the completed tasks from a specific user.
+function getcompletedTasks($id, $database): array
 {
     $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NOT NULL;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
@@ -30,8 +31,8 @@ function getcompletedTasks($id, $database)
     $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $tasks;
 }
-
-function getLists($id, $database)
+//Get's all the lists from a specific user.
+function getLists($id, $database): array
 {
     $statement = $database->query('SELECT * FROM lists WHERE user_id = :user_id AND completed_at IS NULL;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
@@ -39,7 +40,8 @@ function getLists($id, $database)
     $lists = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $lists;
 }
-function getTasksForList($id, $database)
+//Get's all tasks for a specific list.
+function getTasksForList($id, $database): array
 {
     $statement = $database->query('SELECT * FROM tasks WHERE list_id = :list_id AND completed_at IS NULL;');
     $statement->bindParam(':list_id', $id, PDO::PARAM_INT);
@@ -47,7 +49,7 @@ function getTasksForList($id, $database)
     $listTasks = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $listTasks;
 }
-
+// Prints wich list a task belongs to.
 function printListForTask($id, $database)
 {
     if ($id) {
@@ -59,7 +61,7 @@ function printListForTask($id, $database)
         return $lists[0]['title'];
     };
 }
-
+// Checks if a user exists by either returning a null variable or the database email.
 function checkEmailInDatabase($database, $email)
 {
     $statement = $database->prepare('SELECT * FROM users WHERE email = :email');
@@ -69,13 +71,15 @@ function checkEmailInDatabase($database, $email)
     return $databaseEmail;
 }
 
-function deleteListOrTask($database, $table, $id)
+//Deletes either list or task.
+function deleteListOrTask($database, $id) :void
 {
     $statement = $database->prepare(
-        'DELETE FROM :table WHERE id = :id;'
+        'DELETE FROM tasks WHERE id = :id;'
     );
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
-    $statement->bindParam(':table', $table, PDO::PARAM_INT);
+    // $statement->bindParam(':table', $table, PDO::PARAM_INT);
 
     $statement->execute();
 }
+

@@ -25,6 +25,9 @@ svg {
     padding: 15px;
     max-width: 700px;
 }
+.task-container span {
+    font-size: 0.8rem;
+}
 .task-title {
     margin-bottom: 0px;
 }
@@ -60,6 +63,17 @@ svg {
     padding: 15px;
     max-width: 700px;
     margin-bottom: 10px;
+}
+.task-container-in-list {
+    border: rgb(190, 189, 189) 1px solid;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+    max-width: 700px;
+}
+.list-container span {
+    font-size: 0.8rem;
 }
 .flex-btn-container {
     display: flex;

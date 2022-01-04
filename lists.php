@@ -26,13 +26,13 @@
                             <h3 class="list-title"><?= htmlspecialchars($list['title']); ?></h3>
                             <button class="edit-task-btn edit-list-btn"><img class="btn-check-icon btn-icon" src="/assets/images/edit-regular.svg" alt=""></button>
                         </div>
-                        <span>Created: </span><span><?= $list['created_at']; ?></span>
+                        <span class="bold-info-text">Created: </span><span><?= $list['created_at']; ?></span>
 
                         <?php foreach (getTasksForList($list['id'], $database) as $task) : ?>
-                            <div class="task-container">
+                            <div class="task-container-in-list">
                                 <h5 class="task-title"><?= htmlspecialchars($task['title']); ?></h5>
                                 <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
-                                <span>Deadline: </span><span><?php echo htmlspecialchars($task['deadline_at']);?></span>
+                                <span>Deadline: </span><span><?php echo htmlspecialchars($task['deadline_at']); ?></span>
                                 <div class="flex-btn-container">
                                     <form action="app/tasks/done.php" method="POST">
                                         <button class="btn btn-sm btn-primary done-task-btn" type="submit">Task Done</button>
@@ -58,7 +58,7 @@
                                 <div class="mb-3">
                                     <label for="title">Title</label>
                                     <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title">
-                                    <small class="form-text">Please enter a title for your task.</small>
+                                    <small class="form-text">Please enter a title for your list.</small>
                                 </div>
                                 <input type="hidden" id="id" name="id" value="<?= $list['id'] ?>">
                                 <button type="submit" class="btn btn-danger">Update Title</button>

@@ -10,7 +10,10 @@ if (isset($_FILES['upload'])) {
     $upload = $_FILES['upload'];
     // Sets filename to "user_id - date - name"
     $upload['name'] = $_POST['hidden_upload'] . '-' . date('Y-m-d-') . $upload['name'];
-    $destination = __DIR__ . '/uploads/' . $upload['name'];
+    // $destination = __DIR__ . '/uploads/' . $upload['name'];
+    //Test
+    $destination = __DIR__ . '/../../uploads/' . $upload['name'];
+
 
     // If no file is added, print this error
     if ($upload['name'] === '') {
@@ -32,7 +35,10 @@ if (isset($_FILES['upload'])) {
         move_uploaded_file($upload['tmp_name'], $destination);
 
         $id = $_SESSION['user']['id'];
-        $path = '/app/users/uploads/' . $upload['name'];
+        // $path = '/app/users/uploads/' . $upload['name'];
+        //test
+        $path = '/uploads/' . $upload['name'];
+
 
         $statement = $database->prepare('UPDATE users SET image = :path WHERE id = :id');
         $statement->bindParam(':id', $id, PDO::PARAM_INT);

@@ -7,6 +7,6 @@ $table = 'tasks';
 
 //Deletes task
 
-deleteListOrTask($database, $table, $_POST['delete_id']);
+deleteListOrTask($database, $_POST['delete_id']);
 
 redirect('/');

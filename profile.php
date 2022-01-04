@@ -3,13 +3,12 @@ require __DIR__ . '/app/autoload.php';
 require __DIR__ . '/views/header.php'; ?>
 
 <article class="profile-page">
-    <!-- Behöver ett meddelande att uppdatering lyckats... -->
     <img class="profile-img-profile" src="<?php echo $_SESSION['user']['image']; ?>" alt="">
     <br>
-    <span>Name</span>
+    <span>Name:</span>
     <p><?= $_SESSION['user']['name'] ?></p>
 
-    <span>Email</span>
+    <span>Email:</span>
     <p><?= $_SESSION['user']['email'] ?></p>
     <?php
     if (isset($_SESSION['update_errors'])) :
@@ -51,7 +50,6 @@ require __DIR__ . '/views/header.php'; ?>
         endif;
         ?>
         <form action="app/users/update-password.php" method="post">
-
             <div class="mb-3">
                 <label for="new-password">Password</label>
                 <input class="form-control" type="password" name="password" id="password" placeholder="New password">
@@ -60,7 +58,6 @@ require __DIR__ . '/views/header.php'; ?>
             <button type="submit" class="btn btn-secondary">Update password</button>
         </form>
     </article>
-
     <form action="app/users/image.php" method="post" enctype="multipart/form-data">
         <?php
         if (isset($_SESSION['image_errors'])) :
