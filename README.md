@@ -1,4 +1,4 @@
-<img src="https://giphy.com/gifs/bachelorinparadise-angry-frustrated-py2UYwTIX5SXm" width="100%">
+<img src="https://media1.giphy.com/media/py2UYwTIX5SXm/giphy.gif?cid=ecf05e476vxqzc7bh90gvb2bjstuncdilztpwlmj7fbnxmjh&rid=giphy.gif&ct=g" width="100%">
 
 # Task Force
 
