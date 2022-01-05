@@ -7,15 +7,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav align-items-center">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index.php">Home</a>
-                    </li>
-
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="/about.php">About</a>
-                    </li>
+                    </li> -->
                     <?php if (!isUserLoggedIn()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index.php">Home</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/register.php">Register </a>
                         </li>
@@ -26,7 +24,10 @@
 
                     <?php if (isUserLoggedIn()) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/lists.php">Your lists</a>
+                            <a class="nav-link" href="/tasks.php">Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/lists.php">Tags</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/profile.php">Profile</a>
