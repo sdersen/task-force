@@ -65,16 +65,15 @@
 
         </section>
         <section>
-            <!-- <h3>Sort by:</h3>
-            <form action="app/tasks/sort.php" method="post">
-                <label for="Sort">Sort by</label>
+            <form method="post">
+                <label for="Sort">Sort by: </label>
                 <select class="form-control" name="sort" id="sort">
                     <option class="form-control" value="1">Dedline</option>
                     <option class="form-control" value="2">Created</option>
                     <option class="form-control" value="3">Title</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Sort</button>
-            </form> -->
+            </form>
             <!-- <form action="app/tasks/sort.php" method="post">
                 <input type="hidden" id="poo" name="poo" value="">
                 <button type="submit" class="btn btn-primary">created</button>
@@ -83,7 +82,8 @@
             </form> -->
         </section>
         <section>
-            <?php foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
+            <?php
+            foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
                     <div class="headline-container">
                         <h5 class="task-title"><?= htmlspecialchars($task['title']); ?></h5>
@@ -115,17 +115,14 @@
                             <div class="mb-3">
                                 <label for="title">Title</label>
                                 <input class="form-control" type="text" name="title" id="title" placeholder="New title for your task">
-                                <!-- <small class="form-text">Please enter a title for your task.</small> -->
                             </div>
                             <div class="mb-3">
                                 <label for="description">Description</label>
                                 <input class="form-control" type="text" name="description" id="description" placeholder="New description for your task">
-                                <!-- <small class="form-text">Please provide the your description.</small> -->
                             </div>
                             <div class="mb-3">
                                 <label for="date">Dedline</label>
                                 <input class="form-control" type="date" name="date" id="date">
-                                <!-- <small class="form-text">Add a deadline</small> -->
                             </div>
 
                             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
@@ -138,26 +135,28 @@
                     </div>
                     <!-- ADD TO LIST --------------------------------------- -->
                     <div class="list-form hidden">
-                        <form class=" " action="app/tasks/addToList.php" method="POST">
+                        <form class=" " action="app/tasks/add-to-list.php" method="POST">
                             <label for="list">Add to or change list</label>
                             <div class="flex-container">
                                 <select class="form-select form-select-sm select-list-dropdown" name="list" id="list">
-                                    <!-- <option selected>Choose a list</option> -->
                                     <?php
                                     foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
                                         <option class="form-control" value="<?= $list['id']; ?>"><?= htmlspecialchars($list['title']); ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <input type="hidden" id="task_id" name="task_id" value="<?= $task['id'] ?>">
-                                <button class="btn btn-primary" type="submit">Add</button>
+                                <button class="btn btn-sm btn-primary" type="submit">Add</button>
                             </div>
+                        </form>
+                        <form action="app/lists/remove-task.php" method="POST">
+                            <button class="btn btn-sm btn-primary done-list-btn" type="submit">Remove from list</button>
+                            <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
                         </form>
                     </div>
                     <form action="app/tasks/done.php" method="POST">
-                        <button class="btn btn-sm btn-primary done-task-btn" type="submit">Done</button>
+                        <button class="btn btn-primary done-task-btn" type="submit">Done</button>
                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                     </form>
-
                 </article>
             <?php endforeach; ?>
         </section>

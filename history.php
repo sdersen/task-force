@@ -13,7 +13,7 @@
         <span>Created: </span><span><?= $task['created_at']; ?></span>
         <span>Completed: </span><span><?= $task['completed_at']; ?></span>
 
-        <form action="app/tasks/uncomplete.php" method="post">
+        <form action="app/tasks/set-as-uncomplete.php" method="post">
             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
             <button type="submit" class="btn btn-outline-secondary btn-sm">Mark as undone</button>
         </form>

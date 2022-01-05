@@ -14,16 +14,64 @@ function isUserLoggedIn()
     return $loggedIn;
 }
 // Gets all the tasks from a specific user.
-function getTasks($id, $database): array
+function getTasks($id, $database)
 {
-    $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL;');
-    $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-    $statement->execute();
-    $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $tasks;
+    // if (isset($_POST['sort'])) {
+    //     $id = $_POST['sort'];
+
+    //     if ($id === 1) {
+    //         $deadline_array = array_column($tasks, 'deadline_at');
+    //         return array_multisort($deadline_array, SORT_DESC, $tasks);
+    //     };
+    //     if ($id === 2) {
+    //         $created_array = array_column($tasks, 'created_at');
+    //         array_multisort($created_array, SORT_ASC, $tasks);
+    //     };
+    //     if ($id === 3) {
+    //         $title_array = array_column($tasks, 'title');
+    //         array_multisort($title_array, SORT_ASC, $tasks);
+    //     };
+    // };
+    // if (!isset($_POST['sort'])) {
+    //    return $tasks;
+    // }
+
+    if (isset($_POST['sort'])) {
+        $sortId = $_POST['sort'];
+
+        if ($sortId === '1') {
+            $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL ORDER BY deadline_at;');
+            $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $tasksByDeadline = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $tasksByDeadline;
+        };
+        if ($sortId === '2') {
+            $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL ORDER BY created_at;');
+            $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $tasksByCreationDate = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $tasksByCreationDate;
+        };
+        if ($sortId === '3') {
+            $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL ORDER BY title;');
+            $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $tasksByTitle = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $tasksByTitle;
+        };
+    };
+    if (!isset($_POST['sort'])) {
+        $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL;');
+        $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+        $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $tasks;
+    };
 }
+
 //Gets all the completed tasks from a specific user.
-function getcompletedTasks($id, $database): array
+function getcompletedTasks($id, $database)
 {
     $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NOT NULL;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
@@ -72,7 +120,7 @@ function checkEmailInDatabase($database, $email)
 }
 
 //Deletes either list or task.
-function deleteListOrTask($database, $id) :void
+function deleteListOrTask($database, $id): void
 {
     $statement = $database->prepare(
         'DELETE FROM tasks WHERE id = :id;'
@@ -82,4 +130,3 @@ function deleteListOrTask($database, $id) :void
 
     $statement->execute();
 }
-

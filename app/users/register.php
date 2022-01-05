@@ -14,19 +14,19 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 
     // If email or name is not set
     if ($email === '' || $name === '') {
-        $_SESSION['errors'] = [];
+        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Please enter name and emailadress.';
         redirect('/register.php');
     }
     //If password if not given
     if ($_POST['password'] === '') {
-        $_SESSION['errors'] = [];
+        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'You must set a password.';
         redirect('/register.php');
     }
     //If password is not 6 characters or more
     if (strlen($_POST['password'])  < 6) {
-        $_SESSION['errors'] = [];
+        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Your password must be 6 characters or more.';
         redirect('/register.php');
     }
@@ -41,7 +41,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         redirect('/register.php');
     } else {
         // Gives that new user a default profile-image
-        $image = 'app/users/uploads/profile-placeholder-img.jpg';
+        $image = '/uploads/profile-placeholder-img.jpg';
 
         $statement = $database->prepare('INSERT INTO users (name, email, password, image) VALUES (:name, :email, :password, :image);');
         $statement->bindParam(':name', $name, PDO::PARAM_STR);

@@ -25,7 +25,7 @@ span {
     font-size: 1.5rem;
 }
 .advantage-item {
-    margin: 10px;
+    margin: -5px;
     margin-top: 20px;
 }
 .advantage-img {
@@ -54,6 +54,7 @@ span {
     width: 150px;
     border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 15px;
 }
 .alert {
     max-width: 700px;

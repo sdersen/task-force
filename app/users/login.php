@@ -7,7 +7,7 @@ require __DIR__ . '/../autoload.php';
 //A user login
 
 if (isset($_POST['email'], $_POST['password'])) {
-    $email = trim(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL));
+    $email = trim($_POST['email']);
 
     $statement = $database->prepare('SELECT * FROM users WHERE email =:email');
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
@@ -15,8 +15,14 @@ if (isset($_POST['email'], $_POST['password'])) {
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     //If the email dosent exist
+    // $email = trim(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL));
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['errors'][] = 'Sorry, not a valid emailadress';
+
+        redirect('/login.php');
+    }
     if (!$user) {
-        $_SESSION['errors'] = [];
+        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Sorry, no record of this email';
 
         redirect('/login.php');

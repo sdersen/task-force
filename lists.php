@@ -1,5 +1,5 @@
-<!-- Behöver jag verkligen denna?? -->
-<?php require __DIR__ . '/app/lists/getLists.php'; ?>
+<!-- tog bort en rquier till getLists.php som jag deletat?? -->
+<?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article class="list-page">
@@ -48,6 +48,7 @@
                                     <form action="app/lists/remove-task.php" method="POST">
                                         <button class="btn btn-sm btn-primary done-list-btn" type="submit">Remove from list</button>
                                         <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
+                                        <input type="hidden" id="redirect" name="redirect" value="1">
                                     </form>
                                 </div>
                             </div>
@@ -74,7 +75,7 @@
                                     <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
                                     <button type="submit" class="btn btn-danger">Delete List</button>
                                 </form>
-                                <form action="app/lists/delete-list-tasks.php" method="post">
+                                <form action="app/lists/delete-list-and-tasks.php" method="post">
                                     <input type="hidden" id="delete_id" name="delete_id" value="<?= $list['id'] ?>">
                                     <button type="submit" class="btn btn-outline-danger">Delete list incl tasks</button>
                                 </form>
