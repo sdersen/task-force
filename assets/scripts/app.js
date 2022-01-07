@@ -34,6 +34,14 @@ if (taskContainers) {
             addListForm.classList.toggle('hidden');
             console.log('add list');
         });
+
+        // Tillhör test ------------------------------------------------------
+
+        const form = taskContainer.querySelector('.done-form');
+        const doneInput = taskContainer.querySelector('input[type=checkbox]');
+
+        // When the user clicks on the checkbox the form will automagically submit.
+        doneInput.addEventListener('click', () => form.submit());
     });
 }
 
@@ -51,4 +59,13 @@ listContainers.forEach((listContainer) => {
         listEditContainer.classList.toggle('hidden');
         console.log('du har klickat');
     });
+});
+
+// Submits form on a task in a list
+const tasksInLists = document.querySelectorAll('.task-container-in-list');
+tasksInLists.forEach((taskInlist) => {
+    const form = taskInlist.querySelector('.done-form-list');
+    const doneInput = taskInlist.querySelector('input[type=checkbox]');
+
+    doneInput.addEventListener('click', () => form.submit());
 });

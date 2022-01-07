@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 // Creates a task
+echo 'hej';
 
 if (isset($_POST['title'])) {
     $title = trim($_POST['title']);

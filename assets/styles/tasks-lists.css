@@ -25,6 +25,9 @@ svg {
     padding: 15px;
     max-width: 700px;
 }
+.task-info {
+    width: 100%;
+}
 .task-container span {
     font-size: 0.8rem;
 }
@@ -33,6 +36,12 @@ svg {
 }
 .task-description {
     margin-bottom: 0px;
+}
+/* Fixes edit btns so the won't block on small screens */
+.edit-btn-container {
+    width: 97px;
+    display: flex;
+    justify-content: flex-end;
 }
 .edit-task-btn {
     background-color: transparent;
@@ -49,7 +58,7 @@ svg {
     border: none;
     height: 20px;
 }
-.list-form{
+.list-form {
     display: flex;
     align-items: flex-end;
     margin-bottom: 15px;
@@ -62,9 +71,16 @@ svg {
 .bold-info-text {
     font-weight: bold;
 }
+.date-list-container {
+    display: flex;
+    flex-direction: column;
+}
 .flex-container {
     display: flex;
     align-items: center;
+}
+.flex-parent {
+    display: flex;
 }
 /* Lists --------------------------------------- */
 
@@ -75,6 +91,9 @@ svg {
     max-width: 700px;
     margin-bottom: 10px;
 }
+.list-container span {
+    font-size: 0.8rem;
+}
 .task-container-in-list {
     border: rgb(190, 189, 189) 1px solid;
     border-radius: 5px;
@@ -83,13 +102,17 @@ svg {
     padding: 15px;
     max-width: 700px;
 }
-.list-container span {
-    font-size: 0.8rem;
+.task-container-in-list input[type='checkbox']{
+    margin-top: 5px;
+}
+.task-info-container{
+    margin-right: 5px;
+    margin-bottom: -5px;
 }
 .flex-btn-container {
     display: flex;
 }
-.hidden{
+.hidden {
     display: none;
 }
 @media screen and (min-width: 992px) {
@@ -101,5 +124,10 @@ svg {
     }
     .list-container:hover path {
         fill: rgb(54, 54, 54);
+    }
+}
+@media screen and (min-width: 769px) {
+    .date-list-container {
+        flex-direction: row;
     }
 }
