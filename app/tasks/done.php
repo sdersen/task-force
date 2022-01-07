@@ -24,7 +24,7 @@ if (isset($_POST['done_id'])) {
     // indicates where the user should be rederected to
     if ($redirect) {
         redirect('/lists.php');
-    } else {
-        redirect('/');
     }
+
+    redirect('/');
 }

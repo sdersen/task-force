@@ -27,7 +27,7 @@
                             <a class="nav-link" href="/tasks.php">Tasks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/lists.php">Tags</a>
+                            <a class="nav-link" href="/lists.php">Lists</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/profile.php">Profile</a>

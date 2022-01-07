@@ -23,7 +23,7 @@ if (isset($_POST['title'])) {
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
 
     $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    // $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     redirect('/');
 };

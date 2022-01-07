@@ -20,9 +20,7 @@ if ($title !== '') {
     );
     $statement->bindParam(':title', $title, PDO::PARAM_STR);
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
-
     $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
 };
 if ($description !== '') {
     $description = trim($_POST['description']);
@@ -33,9 +31,7 @@ if ($description !== '') {
     );
     $statement->bindParam(':description', $description, PDO::PARAM_STR);
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
-
     $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
 };
 if ($date !== '') {
     $deadline = $_POST['date'];
@@ -48,6 +44,5 @@ if ($date !== '') {
     $statement->bindParam(':deadline_at', $deadline, PDO::PARAM_STR);
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
 };
 redirect('/tasks.php');

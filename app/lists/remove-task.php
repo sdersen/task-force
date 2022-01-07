@@ -18,7 +18,6 @@ if (isset($_POST['id'])) {
 
     if ($redirect) {
         redirect('/lists.php');
-    } else {
-        redirect('/');
     }
+    redirect('/');
 };

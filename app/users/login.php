@@ -37,7 +37,7 @@ if (isset($_POST['email'], $_POST['password'])) {
             'email' => $user['email'],
             'image' => $user['image']
         ];
-        redirect('/index.php');
+        redirect('/tasks.php');
     } elseif ($user['email'] !== $_POST['email'] || password_verify($_POST['password'], $user['password']) === false) {
         $_SESSION['errors'][] = 'Sorry, wrong email or password..';
         redirect('/login.php');

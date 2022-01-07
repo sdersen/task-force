@@ -39,12 +39,6 @@
                 </select>
                 <button type="submit" class="btn btn-primary">Sort</button>
             </form>
-            <!-- <form action="app/tasks/sort.php" method="post">
-                <input type="hidden" id="poo" name="poo" value="">
-                <button type="submit" class="btn btn-primary">created</button>
-                <input type="hidden" id="deadline" name="deadline" value="">
-                <button type="submit" class="btn btn-primary">Deadline</button>
-            </form> -->
         </section>
         <section>
             <?php
