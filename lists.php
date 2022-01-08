@@ -1,8 +1,7 @@
-<!-- tog bort en rquier till getLists.php som jag deletat?? -->
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<article class="list-page">
+<article class="top-margin">
     <h1>Your lists</h1>
     <p>Create your own list and add tasks as you go along...</p>
 
@@ -36,7 +35,7 @@
 
                         <?php foreach (getTasksForList($list['id'], $database) as $task) : ?>
                             <div class="task-container-in-list">
-                                <form class="done-form-list" action="/app/tasks/done-test.php" method="POST">
+                                <form class="done-form-list" action="/app/tasks/done.php" method="POST">
                                     <input type="hidden" id="redirect" name="redirect" value="1">
                                     <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                                     <input class="form-check-input" type="checkbox" name="is_completed" id="is_completed">
@@ -51,28 +50,18 @@
                                         <span>Deadline: </span><span><?php echo htmlspecialchars($task['deadline_at']); ?></span>
                                     </div>
                                 </div>
-                                <!-- <div class="flex-btn-container"> -->
-                                <!-- <form action="app/tasks/done.php" method="POST">
-                                        <button class="btn btn-sm btn-primary done-task-btn" type="submit">Task Done</button>
-                                        <input type="hidden" id="redirect" name="redirect" value="1">
-                                        <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
-                                    </form> -->
-
-                                <!-- </div> -->
                                 <form action="app/lists/remove-task.php" method="POST">
                                     <button class="btn btn-sm btn-primary remove-task-btn" type="submit">Remove from list</button>
                                     <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
                                     <input type="hidden" id="redirect" name="redirect" value="1">
                                 </form>
                             </div>
-
                         <?php endforeach; ?>
 
                         <form action="app/lists/done.php" method="POST">
                             <button class="btn btn-danger done-list-btn" type="submit">List Done</button>
                             <input type="hidden" id="done_id" name="done_id" value="<?= $list['id'] ?>">
                         </form>
-
 
                         <div class="edit-list-container hidden">
                             <form action="app/lists/update.php" method="post">

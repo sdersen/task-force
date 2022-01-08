@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<article class="history-page">
+<article class="top-margin">
     <h1>History</h1>
     <p>Here you can se all your completed tasks...</p>
 </article>

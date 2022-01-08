@@ -5,7 +5,7 @@ if (isset($_SESSION['user'])) :
     redirect('/tasks.php');
 endif; ?>
 
-<main>
+<main class="top-margin">
     <?php
     if (isset($_SESSION['confirm'])) : ?>
         <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>

@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<main>
+<article class="top-margin">
     <?php
     if (isset($_SESSION['user'])) : ?>
         <h3 style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></h3>
@@ -57,7 +57,7 @@
                         <div class="task-info">
                             <div class="headline-container">
                                 <div>
-                                    <form class="done-form" action="/app/tasks/done-test.php" method="POST">
+                                    <form class="done-form" action="/app/tasks/done.php" method="POST">
                                         <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
                                         <input class="form-check-input" type="checkbox" name="is_completed" id="is_completed">
                                         <label for="is_completed"><?= htmlspecialchars($task['title']); ?></label>
@@ -129,20 +129,15 @@
                             </div>
                         </form>
                         <form action="app/lists/remove-task.php" method="POST">
-                            <button class="btn btn-sm btn-primary done-list-btn" type="submit">Remove tag</button>
+                            <button class="btn btn-sm btn-primary done-list-btn" type="submit">Remove</button>
                             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
                         </form>
                     </div>
-                    <!-- <form action="app/tasks/done.php" method="POST">
-                        <button class="btn btn-primary done-task-btn" type="submit">Done</button>
-                        <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
-                    </form> -->
                 </article>
             <?php endforeach; ?>
         </section>
         <a href="/history.php">Compleated tasks</a>
-
     <?php endif; ?>
-</main>
+</article>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

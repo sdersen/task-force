@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<article class="register-page">
+<article class="top-margin">
     <h1>Register</h1>
 
     <?php
@@ -16,7 +16,7 @@
     <form action="app/users/register.php" method="post">
         <div class="mb-3">
             <label for="text">Name</label>
-            <input class="form-control" type="text" name="name" id="name" placeholder="Namn Namnsson" required>
+            <input class="form-control" type="text" name="name" id="name" placeholder="Rick Rubin" required>
             <small class="form-text">Your full name.</small>
         </div>
         <div class="mb-3">
