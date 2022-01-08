@@ -2,9 +2,20 @@
 
 declare(strict_types=1);
 
+// function redirect(string $path)
+// {
+//     header("Location: ${path}");
+//     exit;
+// }
+
+//From V
+define('APP_URL', '/');
 function redirect(string $path)
 {
-    header("Location: ${path}");
+    $path = APP_URL . $path .
+
+        header("Location: ${path}");
+
     exit;
 }
 //Checks if a user is logged in (if a session has started).

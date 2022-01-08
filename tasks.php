@@ -21,7 +21,7 @@
                     <small class="form-text">Describe your task...</small>
                 </div>
                 <div class="mb-3">
-                    <label for="date">Dedline</label>
+                    <label for="date">Deadline</label>
                     <input class="form-control" type="date" name="date" id="date">
                     <small class="form-text">Add a deadline</small>
                 </div>
@@ -33,13 +33,21 @@
             <form method="post">
                 <label for="Sort">Sort by: </label>
                 <select class="form-control" name="sort" id="sort">
-                    <option class="form-control" value="deadline">Dedline</option>
+                    <option class="form-control" value="deadline">Deadline</option>
                     <option class="form-control" value="created">Created</option>
                     <option class="form-control" value="title">Title</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Sort</button>
             </form>
         </section>
+        <?php
+        if (isset($_SESSION['list_errors'])) :
+            foreach ($_SESSION['list_errors'] as $error) : ?>
+                <p class="alert alert-danger"><?= $error ?></p>
+        <?php endforeach;
+            unset($_SESSION['list_errors']);
+        endif;
+        ?>
         <section>
             <?php
             foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
@@ -93,7 +101,7 @@
                                 <input class="form-control" type="text" name="description" id="description" placeholder="New description for your task">
                             </div>
                             <div class="mb-3">
-                                <label for="date">Dedline</label>
+                                <label for="date">Deadline</label>
                                 <input class="form-control" type="date" name="date" id="date">
                             </div>
                             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
@@ -107,9 +115,10 @@
                     <!-- ADD TO LIST --------------------------------------- -->
                     <div class="list-form hidden">
                         <form class=" " action="app/tasks/add-to-list.php" method="POST">
-                            <label for="list">Add to or change tag</label>
+                            <label for="list">Add to or change list</label>
                             <div class="flex-container">
                                 <select class="form-select form-select-sm select-list-dropdown" name="list" id="list">
+                                    <option value="none" selected>Choose a list</option>
                                     <?php
                                     foreach (getLists($_SESSION['user']['id'], $database) as $list) : ?>
                                         <option class="form-control" value="<?= $list['id']; ?>"><?= htmlspecialchars($list['title']); ?></option>
