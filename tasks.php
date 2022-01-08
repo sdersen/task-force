@@ -33,9 +33,9 @@
             <form method="post">
                 <label for="Sort">Sort by: </label>
                 <select class="form-control" name="sort" id="sort">
-                    <option class="form-control" value="1">Dedline</option>
-                    <option class="form-control" value="2">Created</option>
-                    <option class="form-control" value="3">Title</option>
+                    <option class="form-control" value="deadline">Dedline</option>
+                    <option class="form-control" value="created">Created</option>
+                    <option class="form-control" value="title">Title</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Sort</button>
             </form>
@@ -44,17 +44,17 @@
             <?php
             foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
+
                     <div class="flex-parent">
-                        <!-- TEST ---------------------------------------- -->
-                        <div>
-                            <form class="done-form" action="/app/tasks/done-test.php" method="POST">
-                                <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
-                                <input class="form-check-input" type="checkbox" name="is_completed" id="is_completed">
-                            </form>
-                        </div>
                         <div class="task-info">
                             <div class="headline-container">
-                                <h5 class="task-title"><?= htmlspecialchars($task['title']); ?></h5>
+                                <div>
+                                    <form class="done-form" action="/app/tasks/done-test.php" method="POST">
+                                        <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
+                                        <input class="form-check-input" type="checkbox" name="is_completed" id="is_completed">
+                                        <label for="is_completed"><?= htmlspecialchars($task['title']); ?></label>
+                                    </form>
+                                </div>
                                 <!-- EDIT BTNS ---------------------------------------- -->
                                 <div class="edit-btn-container">
                                     <button class="edit-task-btn" aria-label="Edit task button">

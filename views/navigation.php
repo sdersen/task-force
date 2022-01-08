@@ -1,6 +1,6 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid ">
-            <a class="navbar-brand" href="#"> <img class="nav-logo" src="/assets/images/task_logo.png" alt="">
+            <a class="navbar-brand" href="#"> <img class="nav-logo" src="/assets/images/task_logo.png" alt="Task Force logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
                             <a class="nav-link " href="/app/users/logout.php">Logout</a>
                         </li>
                         <li class="nav-item">
-                            <img class="profile-img-nav" src="<?php echo $_SESSION['user']['image']; ?>" alt="">
+                            <img class="profile-img-nav" src="<?php echo $_SESSION['user']['image']; ?>" alt="<?php echo $_SESSION['user']['name']; ?>">
                         </li>
                     <?php endif; ?>
                 </div>

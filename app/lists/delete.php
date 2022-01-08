@@ -14,9 +14,4 @@ $statement = $database->prepare(
 $statement->bindParam(':id', $id, PDO::PARAM_INT);
 $statement->execute();
 
-//Funkar inte, kolla varför vid tillfälle.
-// $lists = 'lists';
-
-// deleteListOrTask($database, $lists, $_POST['delete_id']);
-
 redirect('/lists.php');

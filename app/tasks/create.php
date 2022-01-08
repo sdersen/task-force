@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-// Creates a task
-echo 'hej';
+// Creates a task.
 
 if (isset($_POST['title'])) {
     $title = trim($_POST['title']);
@@ -24,7 +23,6 @@ if (isset($_POST['title'])) {
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
 
     $statement->execute();
-    // $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     redirect('/');
 };

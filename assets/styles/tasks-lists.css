@@ -14,6 +14,10 @@ svg {
     justify-content: space-between;
     align-items: baseline;
 }
+.headline-container label {
+    font-size: clamp(1rem, 0.8519rem + 0.7407vw, 1.5rem);
+    font-weight: bold;
+}
 .create-task-container {
     margin-bottom: 20px;
 }
@@ -36,6 +40,7 @@ svg {
 }
 .task-description {
     margin-bottom: 0px;
+    margin-left: 40px;
 }
 /* Fixes edit btns so the won't block on small screens */
 .edit-btn-container {
@@ -74,13 +79,11 @@ svg {
 .date-list-container {
     display: flex;
     flex-direction: column;
+    margin-left: 40px;
 }
 .flex-container {
     display: flex;
     align-items: center;
-}
-.flex-parent {
-    display: flex;
 }
 /* Lists --------------------------------------- */
 
@@ -102,12 +105,22 @@ svg {
     padding: 15px;
     max-width: 700px;
 }
-.task-container-in-list input[type='checkbox']{
+.task-container-in-list input[type='checkbox'] {
     margin-top: 5px;
 }
-.task-info-container{
+.task-container-in-list label {
+    font-size: clamp(1rem, 0.8519rem + 0.7407vw, 1.5rem);
+    font-weight: bold;
+}
+.task-info-container {
     margin-right: 5px;
     margin-bottom: -5px;
+}
+.date-container-in-list{
+    margin-left: 40px;
+}
+.task-in-list-description{
+    margin-bottom: 0px;
 }
 .flex-btn-container {
     display: flex;

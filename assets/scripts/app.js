@@ -11,7 +11,6 @@ const createListContainer = document.querySelector('.create-list-container');
 if (createListContainer) {
     const openCreateListBtn = document.querySelector('.open-create-list-btn');
     openCreateListBtn.addEventListener('click', () => {
-        console.log('öppna lista');
         createListContainer.classList.toggle('hidden');
     });
 }
@@ -32,15 +31,13 @@ if (taskContainers) {
 
         addListBtn.addEventListener('click', () => {
             addListForm.classList.toggle('hidden');
-            console.log('add list');
         });
 
-        // Tillhör test ------------------------------------------------------
+        // Submits form for a task ---------------------------------------------
 
         const form = taskContainer.querySelector('.done-form');
         const doneInput = taskContainer.querySelector('input[type=checkbox]');
 
-        // When the user clicks on the checkbox the form will automagically submit.
         doneInput.addEventListener('click', () => form.submit());
     });
 }
@@ -53,15 +50,13 @@ listContainers.forEach((listContainer) => {
     const listEditContainer = listContainer.querySelector(
         '.edit-list-container'
     );
-    console.log('hej');
 
     editListBtn.addEventListener('click', () => {
         listEditContainer.classList.toggle('hidden');
-        console.log('du har klickat');
     });
 });
 
-// Submits form on a task in a list
+// Submits form on a task in a list.
 const tasksInLists = document.querySelectorAll('.task-container-in-list');
 tasksInLists.forEach((taskInlist) => {
     const form = taskInlist.querySelector('.done-form-list');

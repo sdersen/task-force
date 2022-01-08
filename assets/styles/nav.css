@@ -1,5 +1,5 @@
 .nav-logo {
-    height: 50px;
+    height: 45px;
 }
 .navbar {
     position: absolute;
@@ -27,6 +27,9 @@ a {
 .navbar-toggler:focus {
     border: none;
 }
+.container-fluid{
+    padding: 0px;
+}
 .profile-img-nav {
     height: 50px;
     width: 50px;
@@ -37,12 +40,14 @@ a {
     box-shadow: none;
 }
 .logout {
-    border: var(--border-grey) solid 2px;
+    border: var(--blue) solid 4px;
     border-radius: 5px;
     margin-bottom: 15px;
+    height: 58px;
 }
 .logout a {
     margin-left: 10px;
+    color: var(--blue);
 }
 
 @media screen and (min-width: 992px) {
@@ -61,7 +66,7 @@ a {
         margin-bottom: 0px;
     }
     .logout:hover {
-        background-color: var(--border-grey);
+        background-color: var(--blue);
     }
     .logout:hover a {
         color: white !important;
@@ -71,5 +76,10 @@ a {
 @media screen and (min-width: 572px) {
     .nav-logo {
         margin-left: 20px;
+    }
+}
+@media screen and (min-width: 330px) {
+    .nav-logo {
+        height: 50px;
     }
 }

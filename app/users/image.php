@@ -8,7 +8,7 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_FILES['upload'])) {
     $upload = $_FILES['upload'];
-    // Sets filename to "user_id - date - name"
+    // Sets filename to "user_id - date - filename"
     $upload['name'] = $_POST['hidden_upload'] . '-' . date('Y-m-d-') . $upload['name'];
     $destination = __DIR__ . '/../../uploads/' . $upload['name'];
 
@@ -19,7 +19,7 @@ if (isset($_FILES['upload'])) {
         $_SESSION['image_errors'][] = 'Please choose an image';
         redirect('/profile.php');
     };
-    //If fomat is not the given print this error
+    //If format is not the given print this error
     if (!in_array($upload['type'], ['image/jpeg', 'image/png'])) {
         $_SESSION['image_errors'] = [];
         $_SESSION['image_errors'][] = 'Sorry, not a valid file format. Try .png or .jpeg';

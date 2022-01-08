@@ -8,6 +8,7 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
+    // Indicates wehe user should be redirected to.
     $redirect = $_POST['redirect'];
 
     $statement = $database->prepare(

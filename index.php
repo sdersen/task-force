@@ -24,7 +24,7 @@ endif; ?>
                 <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
             </div>
             <div class="col-12 col-md-6 advantage-item">
-                <img class="advantage-img" src="/assets/images/task.png" alt="">
+                <img class="advantage-img" src="/assets/images/task.webp" alt="view of how tasks looks in the app.">
             </div>
         </div>
         <div class="row second-row">
@@ -33,7 +33,7 @@ endif; ?>
                 <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>
             </div>
             <div class="col-12 col-md-6 advantage-item">
-                <img class="advantage-img" src="/assets/images/list.png" alt="">
+                <img class="advantage-img" src="/assets/images/list.webp" alt="view on how lists with tasks looks in the app.">
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@ echo $_POST['done_id'];
 echo $_POST['is_completed'];
 
 if (isset($_POST['done_id'])) {
-    // int that indicates where the user should be rederected to
+    // int that indicates where the user should be redirected to
     $redirect = $_POST['redirect'];
     $id = $_POST['done_id'];
     $doneDate = date("Y-m-d");
@@ -23,7 +23,7 @@ if (isset($_POST['done_id'])) {
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    // indicates where the user should be rederected to
+    // indicates where the user should be redirected to
     if ($redirect) {
         redirect('/lists.php');
     }

@@ -3,7 +3,7 @@ require __DIR__ . '/app/autoload.php';
 require __DIR__ . '/views/header.php'; ?>
 
 <article class="profile-page">
-    <img class="profile-img-profile" src="<?php echo $_SESSION['user']['image']; ?>" alt="">
+    <img class="profile-img-profile" src="<?php echo $_SESSION['user']['image']; ?>" alt="<?php echo $_SESSION['user']['name']; ?>">
     <br>
     <span>Name:</span>
     <p><?= $_SESSION['user']['name'] ?></p>
@@ -80,12 +80,12 @@ require __DIR__ . '/views/header.php'; ?>
             <small class="form-text">Choose your image.</small>
         </div>
         <button type="submit" class="btn btn-secondary">Upload</button>
-        <div>
+        <!-- <div>
             <form action="app/users/delete-user.php" method="post">
                 <input type="hidden" id="delete" name="delete" value="<?= $_SESSION['user']['id'] ?>">
                 <button type="submit" class="btn btn-secondary">Delete account</button>
             </form>
-        </div>
+        </div> -->
 </article>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

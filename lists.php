@@ -36,17 +36,18 @@
 
                         <?php foreach (getTasksForList($list['id'], $database) as $task) : ?>
                             <div class="task-container-in-list">
+                                <form class="done-form-list" action="/app/tasks/done-test.php" method="POST">
+                                    <input type="hidden" id="redirect" name="redirect" value="1">
+                                    <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
+                                    <input class="form-check-input" type="checkbox" name="is_completed" id="is_completed">
+                                    <label for="is_completed"><?= htmlspecialchars($task['title']); ?></label>
+                                </form>
                                 <div class="flex-parent">
                                     <div>
-                                        <form class="done-form-list" action="/app/tasks/done-test.php" method="POST">
-                                            <input type="hidden" id="redirect" name="redirect" value="1">
-                                            <input type="hidden" id="done_id" name="done_id" value="<?= $task['id'] ?>">
-                                            <input class="form-check-input" type="checkbox" name="is_completed" id="is_completed">
-                                        </form>
+
                                     </div>
-                                    <div>
-                                        <h5 class="task-title"><?= htmlspecialchars($task['title']); ?></h5>
-                                        <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
+                                    <div class="date-container-in-list">
+                                        <p class="task-in-list-description"><?= htmlspecialchars($task['description']); ?></p>
                                         <span>Deadline: </span><span><?php echo htmlspecialchars($task['deadline_at']); ?></span>
                                     </div>
                                 </div>

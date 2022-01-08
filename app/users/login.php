@@ -14,20 +14,19 @@ if (isset($_POST['email'], $_POST['password'])) {
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    //If the email dosent exist
-    // $email = trim(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL));
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['errors'][] = 'Sorry, not a valid emailadress';
 
         redirect('/login.php');
     }
+    //If the email dosent exist
     if (!$user) {
-        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Sorry, no record of this email';
 
         redirect('/login.php');
     }
-    // Checks if user email and password match
+    // Checks if user email and password match, gets loged in.
     if (password_verify($_POST['password'], $user['password'])) {
         unset($user['password']);
 

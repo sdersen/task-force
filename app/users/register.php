@@ -20,17 +20,15 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     }
     //If password if not given
     if ($_POST['password'] === '') {
-        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'You must set a password.';
         redirect('/register.php');
     }
     //If password is not 6 characters or more
     if (strlen($_POST['password'])  < 6) {
-        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Your password must be 6 characters or more.';
         redirect('/register.php');
     }
-    // Är det ok att filter_validate är här?
+    // Checks for valid email
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         $_SESSION['errors'][] = 'This is not valid email, please try again.';
         redirect('/register.php');

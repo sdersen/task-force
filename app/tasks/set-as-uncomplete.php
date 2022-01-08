@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-// Sets a done-task as uncomplete.
+// Sets an allredy done-task as uncomplete and brings it back to the other tasks.
 
 $id = $_POST['id'];
 
