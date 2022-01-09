@@ -14,7 +14,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 
     // If email or name is not set
     if ($email === '' || $name === '') {
-        // $_SESSION['errors'] = [];
         $_SESSION['errors'][] = 'Please enter name and emailadress.';
         redirect('/register.php');
     }
@@ -24,8 +23,8 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         redirect('/register.php');
     }
     //If password is not 6 characters or more
-    if (strlen($_POST['password'])  < 12) {
-        $_SESSION['errors'][] = 'Your password must be 12 characters or more.';
+    if (strlen($_POST['password'])  < 16) {
+        $_SESSION['errors'][] = 'Your password must be 16 characters or more.';
         redirect('/register.php');
     }
     // Checks for valid email
@@ -46,12 +45,12 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
         $statement->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
         $statement->bindParam(':image', $image, PDO::PARAM_STR);
-
         $statement->execute();
+
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         //Lets the user know that th e registration was successfull
-        $_SESSION['confirm'] = 'Registry successfull, you can now login!';
+        $_SESSION['confirm'] = 'Registration successful, you can now login!';
         redirect('/');
     };
 };

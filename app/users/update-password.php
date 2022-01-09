@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-//updatdes user password
+//updates user password
 
 if (isset($_POST['password'])) {
     $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $id = $_SESSION['user']['id'];
 
     //checks that password has 6 or more characters
-    if (strlen($_POST['password'])  < 12) {
-        $_SESSION['password_errors'][] = 'Your password must be 12 characters or more.';
+    if (strlen($_POST['password'])  < 16) {
+        $_SESSION['password_errors'][] = 'Your password must be 16 characters or more.';
         redirect('/profile.php');
     } else {
         $statement = $database->prepare('UPDATE users SET password = :password WHERE id = :id');

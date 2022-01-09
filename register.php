@@ -28,7 +28,7 @@
         <div class="mb-3">
             <label for="password">Password</label>
             <input class="form-control" type="password" name="password" id="password" required>
-            <small class="form-text">Please provide the your password (passphrase) Min 12 characters.</small>
+            <small class="form-text">Please provide the your password (passphrase) Min 16 characters.</small>
         </div>
 
         <button type="submit" class="btn btn-primary">Register new user</button>
