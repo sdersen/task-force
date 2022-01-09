@@ -15,6 +15,10 @@ if ($title !== '') {
     //task_id passed as hidden
     $id = $_POST['id'];
 
+    if (strlen($title) > 35) {
+        $_SESSION['update_task_errors'][] = 'Your title must be 35 characters or shorter.';
+        redirect('/tasks.php');
+    }
     $statement = $database->prepare(
         'UPDATE tasks SET title = :title WHERE id = :id'
     );
@@ -25,6 +29,11 @@ if ($title !== '') {
 if ($description !== '') {
     $description = trim($_POST['description']);
     $id = $_POST['id'];
+
+    if (strlen($description) > 200) {
+        $_SESSION['update_task_errors'][] = 'Your description must be 200 characters or shorter.';
+        redirect('/tasks.php');
+    }
 
     $statement = $database->prepare(
         'UPDATE tasks SET description = :description WHERE id = :id'

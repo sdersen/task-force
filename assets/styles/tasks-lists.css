@@ -40,7 +40,6 @@ svg {
 }
 .task-description {
     margin-bottom: 0px;
-    margin-left: 40px;
 }
 /* Fixes edit btns so the won't block on small screens */
 .edit-btn-container {
@@ -79,7 +78,6 @@ svg {
 .date-list-container {
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
 }
 .flex-container {
     display: flex;
@@ -116,10 +114,10 @@ svg {
     margin-right: 5px;
     margin-bottom: -5px;
 }
-.date-container-in-list{
+.date-container-in-list {
     margin-left: 40px;
 }
-.task-in-list-description{
+.task-in-list-description {
     margin-bottom: 0px;
 }
 .flex-btn-container {
@@ -142,5 +140,13 @@ svg {
 @media screen and (min-width: 769px) {
     .date-list-container {
         flex-direction: row;
+    }
+}
+@media screen and (min-width: 554px) {
+    .task-description {
+        margin-left: 40px;
+    }
+    .date-list-container {
+        margin-left: 40px;
     }
 }

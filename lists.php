@@ -11,7 +11,7 @@
             <form action="app/lists/create.php" method="post">
                 <div class="mb-3">
                     <label for="title">Title</label>
-                    <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" required>
+                    <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" required maxlength="35" >
                     <small class="form-text">Please enter a title for your list.</small>
                 </div>
                 <button type="submit" class="btn btn-danger create-list-btn">Create list</button>
@@ -67,7 +67,7 @@
                             <form action="app/lists/update.php" method="post">
                                 <div class="mb-3">
                                     <label for="title">Title</label>
-                                    <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title">
+                                    <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" maxlength="35" >
                                     <small class="form-text">Please enter a title for your list.</small>
                                 </div>
                                 <input type="hidden" id="id" name="id" value="<?= $list['id'] ?>">

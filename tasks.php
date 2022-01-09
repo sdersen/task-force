@@ -6,18 +6,27 @@
     if (isset($_SESSION['user'])) : ?>
         <h3 style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></h3>
         <p>Start structuring your days, weeks, garden, home or anyting else you would like! Get started and add your tasks bellow.</p>
+        <p>Psssst, you can also add to-do lists to better structure your tasks. Click on Lists in the menu above...</p>
         <button class="open-create-task-btn">+</button>
+        <?php
+        if (isset($_SESSION['task_errors'])) :
+            foreach ($_SESSION['task_errors'] as $error) : ?>
+                <p class="alert alert-danger"><?= $error ?></p>
+        <?php endforeach;
+            unset($_SESSION['task_errors']);
+        endif;
+        ?>
         <!-- CREATE TASK------------------------------------- -->
         <section class="create-task-container hidden">
             <form action="app/tasks/create.php" method="post">
                 <div class="mb-3">
                     <label for="title">Title</label>
-                    <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" required>
+                    <input class="form-control" type="text" name="title" id="title" placeholder="An amazing title" maxlength="35" required>
                     <small class="form-text">Please enter a title for your task.</small>
                 </div>
                 <div class="mb-3">
                     <label for="description">Description</label>
-                    <input class="form-control" type="text" name="description" id="description">
+                    <input class="form-control" type="text" name="description" id="description" maxlength="200">
                     <small class="form-text">Describe your task...</small>
                 </div>
                 <div class="mb-3">
@@ -44,8 +53,14 @@
         if (isset($_SESSION['list_errors'])) :
             foreach ($_SESSION['list_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-        <?php endforeach;
+            <?php endforeach;
             unset($_SESSION['list_errors']);
+        endif;
+        if (isset($_SESSION['update_task_errors'])) :
+            foreach ($_SESSION['update_task_errors'] as $error) : ?>
+                <p class="alert alert-danger"><?= $error ?></p>
+        <?php endforeach;
+            unset($_SESSION['update_task_errors']);
         endif;
         ?>
         <section>
@@ -94,11 +109,11 @@
                         <form action="app/tasks/update.php" method="post">
                             <div class="mb-3">
                                 <label for="title">Title</label>
-                                <input class="form-control" type="text" name="title" id="title" placeholder="New title for your task">
+                                <input class="form-control" type="text" name="title" id="title" placeholder="New title for your task" maxlength="35">
                             </div>
                             <div class="mb-3">
                                 <label for="description">Description</label>
-                                <input class="form-control" type="text" name="description" id="description" placeholder="New description for your task">
+                                <input class="form-control" type="text" name="description" id="description" placeholder="New description for your task" maxlength="200">
                             </div>
                             <div class="mb-3">
                                 <label for="date">Deadline</label>
@@ -136,7 +151,7 @@
                 </article>
             <?php endforeach; ?>
         </section>
-        <a href="/history.php">Compleated tasks</a>
+        <a href="/history.php">Completed tasks</a>
     <?php endif; ?>
 </article>
 

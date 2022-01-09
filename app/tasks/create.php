@@ -14,6 +14,15 @@ if (isset($_POST['title'])) {
     $id = $_SESSION['user']['id'];
     $createdDate = date("Y-m-d");
 
+    if (strlen($title) > 35) {
+        $_SESSION['task_errors'][] = 'Your title must be 35 characters or shorter.';
+        redirect('/tasks.php');
+    }
+    if (strlen($description) > 200) {
+        $_SESSION['task_errors'][] = 'Your description must be 200 characters or shorter.';
+        redirect('/tasks.php');
+    }
+
     $statement = $database->prepare('INSERT INTO tasks (title, description, created_at, deadline_at, user_id)
     VALUES (:title, :description, :created_at, :deadline_at, :user_id);');
     $statement->bindParam(':title', $title, PDO::PARAM_STR);

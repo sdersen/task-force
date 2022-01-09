@@ -11,9 +11,8 @@ if (isset($_POST['password'])) {
     $id = $_SESSION['user']['id'];
 
     //checks that password has 6 or more characters
-    if (strlen($_POST['password'])  < 6) {
-        $_SESSION['password_errors'] = [];
-        $_SESSION['password_errors'][] = 'Your password must be 6 characters or more.';
+    if (strlen($_POST['password'])  < 12) {
+        $_SESSION['password_errors'][] = 'Your password must be 12 characters or more.';
         redirect('/profile.php');
     } else {
         $statement = $database->prepare('UPDATE users SET password = :password WHERE id = :id');

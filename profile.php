@@ -53,7 +53,7 @@ require __DIR__ . '/views/header.php'; ?>
             <div class="mb-3">
                 <label for="new-password">Password</label>
                 <input class="form-control" type="password" name="password" id="password" placeholder="New password">
-                <small class="form-text">Please provide your new password (passphrase). Min 6 characters.</small>
+                <small class="form-text">Please provide your new password (passphrase). Min 12 characters.</small>
             </div>
             <button type="submit" class="btn btn-secondary">Update password</button>
         </form>
