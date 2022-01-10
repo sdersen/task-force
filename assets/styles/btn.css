@@ -7,24 +7,20 @@ button {
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
-.open-create-task-btn {
+.create-btns {
     height: 52px;
     width: 52px;
-    border-radius: 50%;
+    border-radius: 100%;
     border: none;
-    background-color: var(--orange);
-    color: white;
     font-size: 2.2rem;
+    color: white;
+}
+.open-create-task-btn {
+    background-color: var(--orange);
     margin-bottom: 20px;
 }
 .open-create-list-btn {
-    height: 52px;
-    width: 52px;
-    border-radius: 50%;
-    border: none;
     background-color: var(--blue);
-    color: white;
-    font-size: 2.2rem;
     margin-bottom: 15px;
 }
 .btn-icon {

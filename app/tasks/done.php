@@ -7,7 +7,7 @@ require __DIR__ . '/../autoload.php';
 //Marks a task as done by adding a "completed_at" date
 
 if (isset($_POST['done_id'])) {
-    // int that indicates where the user should be redirected to
+    // An int that indicates where the user should be redirected to
     $redirect = $_POST['redirect'];
     $id = $_POST['done_id'];
     $doneDate = date("Y-m-d");

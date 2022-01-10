@@ -3,7 +3,7 @@
 
 <article class="top-margin">
     <h1>History</h1>
-    <p>Here you can se all your completed tasks...</p>
+    <p>Here you can see all your completed tasks...</p>
 </article>
 <?php foreach (getcompletedTasks($_SESSION['user']['id'], $database) as $task) : ?>
     <article class="task-container">
@@ -18,5 +18,5 @@
             <button type="submit" class="btn btn-outline-secondary btn-sm">Mark as undone</button>
         </form>
     </article>
-<?php endforeach; ?>
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php endforeach;
+require __DIR__ . '/views/footer.php'; ?>

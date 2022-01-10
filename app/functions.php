@@ -8,29 +8,19 @@ function redirect(string $path)
     exit;
 }
 
-//From Vincent
-// define('APP_URL', '/');
-// function redirect(string $path)
-// {
-//     $path = APP_URL . $path .
-
-//         header("Location: ${path}");
-
-//     exit;
-// }
-
 //Checks if a user is logged in (if a session has started).
-function isUserLoggedIn()
+function isUserLoggedIn() :bool
 {
     $loggedIn = isset($_SESSION['user']);
     return $loggedIn;
 }
 // Gets all the tasks from a specific user.
-function getTasks($id, $database)
+function getTasks($id, $database): array
 {
     if (isset($_POST['sort'])) {
         $sortId = $_POST['sort'];
 
+        //Sorts query if sort on task.php is activated.
         if ($sortId === 'deadline') {
             $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL ORDER BY deadline_at;');
             $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
@@ -63,7 +53,7 @@ function getTasks($id, $database)
 }
 
 //Gets all the completed tasks from a specific user.
-function getcompletedTasks($id, $database)
+function getcompletedTasks($id, $database): array
 {
     $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NOT NULL;');
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
@@ -97,12 +87,11 @@ function printListForTask($id, $database)
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
         $lists = $statement->fetchAll(PDO::FETCH_ASSOC);
-
         return $lists[0]['title'];
     };
 }
 // Checks if a user exists by either returning a null variable or the database email.
-function checkEmailInDatabase($database, $email) :string
+function checkEmailInDatabase($database, $email): bool
 {
     $statement = $database->prepare('SELECT * FROM users WHERE email = :email');
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
@@ -111,14 +100,13 @@ function checkEmailInDatabase($database, $email) :string
     return $databaseEmail;
 }
 
-//Deletes either list or task.
+//Deletes task.
 function deleteListOrTask($database, $id): void
 {
     $statement = $database->prepare(
         'DELETE FROM tasks WHERE id = :id;'
     );
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
-    // $statement->bindParam(':table', $table, PDO::PARAM_INT);
 
     $statement->execute();
 }

@@ -15,9 +15,7 @@ if (isset($_POST['title'])) {
     $statement->bindParam(':title', $title, PDO::PARAM_STR);
     $statement->bindParam(':created_at', $createdDate, PDO::PARAM_STR);
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
-
     $statement->execute();
-    // $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     redirect('/lists.php');
 };

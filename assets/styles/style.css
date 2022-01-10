@@ -50,9 +50,6 @@ input[type='checkbox'] {
 
 /* FOOTER ------------------------------ */
 footer {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
     margin-top: 50px;
 }
 footer p {

@@ -7,9 +7,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav align-items-center">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/about.php">About</a>
-                    </li> -->
                     <?php if (!isUserLoggedIn()) : ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/index.php">Home</a>

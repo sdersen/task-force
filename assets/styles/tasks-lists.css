@@ -47,17 +47,7 @@ svg {
     display: flex;
     justify-content: flex-end;
 }
-.edit-task-btn {
-    background-color: transparent;
-    border: none;
-    height: 26px;
-}
-.edit-list-btn {
-    background-color: transparent;
-    border: none;
-    height: 26px;
-}
-.add-list-btn {
+.edit-and-add-btns {
     background-color: transparent;
     border: none;
     height: 26px;
@@ -65,8 +55,7 @@ svg {
 .list-form {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 .select-list-dropdown {
     max-width: 200px;
@@ -96,7 +85,7 @@ svg {
     font-size: 0.8rem;
 }
 .task-container-in-list {
-    border: rgb(190, 189, 189) 1px solid;
+    border: var(--border-grey) 1px solid;
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
