@@ -102,7 +102,7 @@ function printListForTask($id, $database)
     };
 }
 // Checks if a user exists by either returning a null variable or the database email.
-function checkEmailInDatabase($database, $email)
+function checkEmailInDatabase($database, $email) :string
 {
     $statement = $database->prepare('SELECT * FROM users WHERE email = :email');
     $statement->bindParam(':email', $email, PDO::PARAM_STR);

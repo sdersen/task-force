@@ -50,17 +50,17 @@ svg {
 .edit-task-btn {
     background-color: transparent;
     border: none;
-    height: 20px;
+    height: 26px;
 }
 .edit-list-btn {
     background-color: transparent;
     border: none;
-    height: 20px;
+    height: 26px;
 }
 .add-list-btn {
     background-color: transparent;
     border: none;
-    height: 20px;
+    height: 26px;
 }
 .list-form {
     display: flex;

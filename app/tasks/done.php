@@ -21,6 +21,8 @@ if (isset($_POST['done_id'])) {
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+    $_SESSION['task_done_confirm'][] = 'Task complete!';
+
     // indicates where the user should be redirected to
     if ($redirect) {
         redirect('/lists.php');

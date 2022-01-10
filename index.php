@@ -11,6 +11,10 @@ endif; ?>
         <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
     <?php unset($_SESSION['confirm']);
     endif;
+    if (isset($_SESSION['delete_user_confirmation'])) : ?>
+        <p class="alert alert-success"><?php echo $_SESSION['delete_user_confirmation'] ?></p>
+    <?php unset($_SESSION['delete_user_confirmation']);
+    endif;
     ?>
     <h1><?php echo $config['title']; ?></h1>
     <p>Organize everything in life whether there is a work-related task or a personal goal, Task Force is here to help you manage all your to-dos.</p>

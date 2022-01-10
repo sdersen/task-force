@@ -12,8 +12,14 @@
         if (isset($_SESSION['task_errors'])) :
             foreach ($_SESSION['task_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-        <?php endforeach;
+            <?php endforeach;
             unset($_SESSION['task_errors']);
+        endif;
+        if (isset($_SESSION['task_done_confirm'])) :
+            foreach ($_SESSION['task_done_confirm'] as $error) : ?>
+                <p class="alert alert-success"><?= $error ?></p>
+        <?php endforeach;
+            unset($_SESSION['task_done_confirm']);
         endif;
         ?>
         <!-- CREATE TASK------------------------------------- -->

@@ -11,7 +11,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="/assets/images/check-double-solid.svg" type="image/x-icon">
     <!-- Vanilla CSS -->
-    <link rel="stylesheet" href="/assets/styles/app.css">
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="/assets/styles/btn.css">
     <link rel="stylesheet" href="/assets/styles/tasks-lists.css">

@@ -80,6 +80,12 @@ require __DIR__ . '/views/header.php'; ?>
             <small class="form-text">Choose your image.</small>
         </div>
         <button type="submit" class="btn btn-secondary">Upload</button>
+    </form>
+    <br>
+    <form action="app/users/delete.php" method="post">
+        <input type="hidden" id="delete_user" name="delete_user" value="<?= $_SESSION['user']['id'] ?>">
+        <button type="submit" class="btn btn-outline-danger">Delete entire profile</button>
+    </form>
 </article>
 
 <?php require __DIR__ . '/views/footer.php'; ?>
