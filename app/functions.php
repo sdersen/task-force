@@ -9,13 +9,13 @@ function redirect(string $path)
 }
 
 //Checks if a user is logged in (if a session has started).
-function isUserLoggedIn() :bool
+function isUserLoggedIn() : bool
 {
     $loggedIn = isset($_SESSION['user']);
     return $loggedIn;
 }
 // Gets all the tasks from a specific user.
-function getTasks($id, $database): array
+function getTasks($id, $database) : array
 {
     if (isset($_POST['sort'])) {
         $sortId = $_POST['sort'];
