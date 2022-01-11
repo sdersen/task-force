@@ -5,13 +5,12 @@
 <article class="top-margin">
     <h1>Login</h1>
     <form action="app/users/login.php" method="post">
-        <?php
-        if (isset($_SESSION['errors'])) :
-            foreach ($_SESSION['errors'] as $error) : ?>
+        <?php if (isset($_SESSION['errors'])) : ?>
+            <?php foreach ($_SESSION['errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-        <?php endforeach;
-            unset($_SESSION['errors']);
-        endif; ?>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['errors']); ?>
+        <?php endif; ?>
         <div class="mb-3">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" id="email" placeholder="name@mail.com" required>

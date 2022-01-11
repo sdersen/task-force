@@ -10,20 +10,16 @@ require __DIR__ . '/views/header.php'; ?>
 
     <span>Email:</span>
     <p><?= $_SESSION['user']['email'] ?></p>
-    <?php
-    if (isset($_SESSION['update_errors'])) :
-        foreach ($_SESSION['update_errors'] as $error) : ?>
+    <?php if (isset($_SESSION['update_errors'])) : ?>
+        <?php foreach ($_SESSION['update_errors'] as $error) : ?>
             <p class="alert alert-danger"><?= $error ?></p>
-    <?php endforeach;
-        unset($_SESSION['update_errors']);
-    endif;
-    ?>
-    <?php
-    if (isset($_SESSION['confirm'])) : ?>
+        <?php endforeach; ?>
+        <?php unset($_SESSION['update_errors']); ?>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['confirm'])) : ?>
         <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
-    <?php unset($_SESSION['confirm']);
-    endif;
-    ?>
+        <?php unset($_SESSION['confirm']); ?>
+    <?php endif; ?>
     <article class="update-profile-container ">
         <h3>Update information</h3>
 
@@ -35,20 +31,16 @@ require __DIR__ . '/views/header.php'; ?>
             </div>
             <button type="submit" class="btn btn-secondary">Update email</button>
         </form>
-        <?php
-        if (isset($_SESSION['password_errors'])) :
-            foreach ($_SESSION['password_errors'] as $error) : ?>
+        <?php if (isset($_SESSION['password_errors'])) : ?>
+            <?php foreach ($_SESSION['password_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-        <?php endforeach;
-            unset($_SESSION['password_errors']);
-        endif;
-        ?>
-        <?php
-        if (isset($_SESSION['password_updated'])) : ?>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['password_errors']); ?>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['password_updated'])) : ?>
             <p class="alert alert-success"><?php echo $_SESSION['password_updated'] ?></p>
-        <?php unset($_SESSION['password_updated']);
-        endif;
-        ?>
+            <?php unset($_SESSION['password_updated']); ?>
+        <?php endif; ?>
         <form action="app/users/update-password.php" method="post">
             <div class="mb-3">
                 <label for="new-password">Password</label>
@@ -59,20 +51,16 @@ require __DIR__ . '/views/header.php'; ?>
         </form>
     </article>
     <form action="app/users/image.php" method="post" enctype="multipart/form-data">
-        <?php
-        if (isset($_SESSION['image_errors'])) :
-            foreach ($_SESSION['image_errors'] as $error) : ?>
+        <?php if (isset($_SESSION['image_errors'])) :?>
+            <?php foreach ($_SESSION['image_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-        <?php endforeach;
-            unset($_SESSION['image_errors']);
-        endif;
-        ?>
-        <?php
-        if (isset($_SESSION['confirm'])) : ?>
+        <?php endforeach; ?>
+        <?php unset($_SESSION['image_errors']);?>
+            <?php endif; ?>
+        <?php if (isset($_SESSION['confirm'])) : ?>
             <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
-        <?php unset($_SESSION['confirm']);
-        endif;
-        ?>
+        <?php unset($_SESSION['confirm']);?>
+        <?php endif; ?>
         <div class="mb-3">
             <label class="form-label" for="upload">Upload profile image</label>
             <input class="form-control" type="file" accept=".png, .jpeg" name="upload" id="upload">

@@ -2,26 +2,23 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article class="top-margin">
-    <?php
-    if (isset($_SESSION['user'])) : ?>
+    <?php if (isset($_SESSION['user'])) : ?>
         <h3 style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></h3>
         <p>Start structuring your days, weeks, garden, home or anyting else you would like! Get started and add your tasks bellow.</p>
         <p>Psssst, you can also add to-do lists to better structure your tasks. Click on Lists in the menu above...</p>
         <button class="open-create-task-btn create-btns">+</button>
-        <?php
-        if (isset($_SESSION['task_errors'])) :
-            foreach ($_SESSION['task_errors'] as $error) : ?>
+        <?php if (isset($_SESSION['task_errors'])) : ?>
+            <?php foreach ($_SESSION['task_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-            <?php endforeach;
-            unset($_SESSION['task_errors']);
-        endif;
-        if (isset($_SESSION['task_done_confirm'])) :
-            foreach ($_SESSION['task_done_confirm'] as $error) : ?>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['task_errors']); ?>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['task_done_confirm'])) : ?>
+            <?php foreach ($_SESSION['task_done_confirm'] as $error) : ?>
                 <p class="alert alert-success"><?= $error ?></p>
-        <?php endforeach;
-            unset($_SESSION['task_done_confirm']);
-        endif;
-        ?>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['task_done_confirm']); ?>
+        <?php endif; ?>
         <!-- CREATE TASK------------------------------------- -->
         <section class="create-task-container hidden">
             <form action="app/tasks/create.php" method="post">
@@ -55,23 +52,20 @@
                 <button type="submit" class="btn btn-primary">Sort</button>
             </form>
         </section>
-        <?php
-        if (isset($_SESSION['list_errors'])) :
-            foreach ($_SESSION['list_errors'] as $error) : ?>
+        <?php if (isset($_SESSION['list_errors'])) : ?>
+            <?php foreach ($_SESSION['list_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-            <?php endforeach;
-            unset($_SESSION['list_errors']);
-        endif;
-        if (isset($_SESSION['update_task_errors'])) :
-            foreach ($_SESSION['update_task_errors'] as $error) : ?>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['list_errors']); ?>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['update_task_errors'])) : ?>
+            <?php foreach ($_SESSION['update_task_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-        <?php endforeach;
-            unset($_SESSION['update_task_errors']);
-        endif;
-        ?>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['update_task_errors']); ?>
+        <?php endif; ?>
         <section>
-            <?php
-            foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
+            <?php foreach (getTasks($_SESSION['user']['id'], $database) as $task) : ?>
                 <article class="task-container">
 
                     <div class="flex-parent">
