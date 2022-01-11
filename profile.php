@@ -51,15 +51,15 @@ require __DIR__ . '/views/header.php'; ?>
         </form>
     </article>
     <form action="app/users/image.php" method="post" enctype="multipart/form-data">
-        <?php if (isset($_SESSION['image_errors'])) :?>
+        <?php if (isset($_SESSION['image_errors'])) : ?>
             <?php foreach ($_SESSION['image_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
-        <?php endforeach; ?>
-        <?php unset($_SESSION['image_errors']);?>
-            <?php endif; ?>
+            <?php endforeach; ?>
+            <?php unset($_SESSION['image_errors']); ?>
+        <?php endif; ?>
         <?php if (isset($_SESSION['confirm'])) : ?>
             <p class="alert alert-success"><?php echo $_SESSION['confirm'] ?></p>
-        <?php unset($_SESSION['confirm']);?>
+            <?php unset($_SESSION['confirm']); ?>
         <?php endif; ?>
         <div class="mb-3">
             <label class="form-label" for="upload">Upload profile image</label>

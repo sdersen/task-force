@@ -20,7 +20,7 @@ if (isset($_POST['password'])) {
         $statement->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
 
         $statement->execute();
-        
+
         // informs user that change is made.
         $_SESSION['password_updated'] = 'Password updated';
         redirect('/profile.php');

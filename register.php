@@ -4,14 +4,12 @@
 <article class="top-margin">
     <h1>Register</h1>
 
-    <?php
-    if (isset($_SESSION['errors'])) :
-        foreach ($_SESSION['errors'] as $error) : ?>
+    <?php if (isset($_SESSION['errors'])) : ?>
+        <?php foreach ($_SESSION['errors'] as $error) : ?>
             <p class="alert alert-danger"><?= $error ?></p>
-    <?php endforeach;
-        unset($_SESSION['errors']);
-    endif;
-    ?>
+        <?php endforeach; ?>
+        <?php unset($_SESSION['errors']); ?>
+    <?php endif; ?>
 
     <form action="app/users/register.php" method="post">
         <div class="mb-3">
