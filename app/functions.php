@@ -99,14 +99,17 @@ function checkEmailInDatabase($database, $email): bool
     $databaseEmail = $statement->fetch(PDO::FETCH_ASSOC);
     return $databaseEmail;
 }
-
-//Deletes task.
-function deleteListOrTask($database, $id): void
+//Deletes task or list.
+function deleteListOrTask($database, $id, $query): void
 {
-    $statement = $database->prepare(
-        'DELETE FROM tasks WHERE id = :id;'
-    );
+    $statement = $database->prepare($query);
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
-
+    $statement->execute();
+}
+function SetListOrTaskDone($database, $id, $doneDate, $query, $bind): void
+{
+    $statement = $database->prepare($query);
+    $statement->bindParam($bind, $id, PDO::PARAM_INT);
+    $statement->bindParam(':date', $doneDate, PDO::PARAM_STR);
     $statement->execute();
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-// Adds a list id to a task.
+// Adds a list_id to a task.
 
 if (isset($_POST['list'])) {
-    // id for the list
+    // Id for the list
     $list_id = trim($_POST['list']);
-    //Id for post
+    //Id for task
     $id = $_POST['task_id'];
 
     if ($list_id === 'none') {

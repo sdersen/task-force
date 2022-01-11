@@ -7,11 +7,7 @@ require __DIR__ . '/../autoload.php';
 // Deletes list but not tasks in the list
 
 $id = $_POST['delete_id'];
-
-$statement = $database->prepare(
-    'DELETE FROM lists WHERE id = :id;'
-);
-$statement->bindParam(':id', $id, PDO::PARAM_INT);
-$statement->execute();
+$query = 'DELETE FROM lists WHERE id = :id;';
+deleteListOrTask($database, $id, $query);
 
 redirect('/lists.php');

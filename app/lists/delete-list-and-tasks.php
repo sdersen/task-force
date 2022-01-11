@@ -8,12 +8,9 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['delete_id'])) {
     $id = $_POST['delete_id'];
+    $queryList = 'DELETE FROM lists WHERE id = :id;';
 
-    $statement = $database->prepare(
-        'DELETE FROM lists WHERE id = :id;'
-    );
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
-    $statement->execute();
+    deleteListOrTask($database, $id, $queryList);
 
     $statement = $database->prepare(
         'DELETE FROM tasks WHERE list_id = :list_id;'

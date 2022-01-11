@@ -14,7 +14,6 @@ if (isset($_POST['email'])) {
 
     //Checks if email allredy exists in database
     if ($databaseEmail) {
-        // $_SESSION['update_errors'] = [];
         $_SESSION['update_errors'][] = 'The email is alredy registerd.';
         redirect('/profile.php');
     }

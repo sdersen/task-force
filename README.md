@@ -18,7 +18,7 @@ A simpel to-do app as a school project. The app allows the user to:
 - View all tasks within a list.
 - View all tasks which should be completed today.
 
-- **Extra:** I'm able to remove a task from a list.
+- **Extra:** I'm able to remove a task from a list and delete a user along with all their lists and tasks.
 
 # Installation
 

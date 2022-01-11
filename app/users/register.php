@@ -17,12 +17,12 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
         $_SESSION['errors'][] = 'Please enter name and emailadress.';
         redirect('/register.php');
     }
-    //If password if not given
+    //If password is not given
     if ($_POST['password'] === '') {
         $_SESSION['errors'][] = 'You must set a password.';
         redirect('/register.php');
     }
-    //If password is not 6 characters or more
+    //If password is not 16 characters or more
     if (strlen($_POST['password'])  < 16) {
         $_SESSION['errors'][] = 'Your password must be 16 characters or more.';
         redirect('/register.php');
