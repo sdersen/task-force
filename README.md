@@ -18,11 +18,21 @@ A simpel to-do app as a school project. The app allows the user to:
 - View all tasks within a list.
 - View all tasks which should be completed today.
 
-- **Extra:** I'm able to remove a task from a list and delete a user along with all their lists and tasks.
+- **Extra:** 
+- I'm able to remove a task from a list.
+- I'm able to delete a user along with all their lists and tasks.
 
 # Installation
 
-Clone the repo and open a localhost.
+To install this project follow this list
+- Clone the project
+```
+git clone https://github.com/sdersen/task-force
+```
+- Start php server ```php -S localhost:8000```
+ 
+- Open up you browser and paste in this link:
+```http://localhost:8000/```
 
 # Code Review
 
@@ -44,4 +54,4 @@ Code review written by [Jane Doh](https://github.com/username).
 Tested by the following people:
 
 1. Emma Hansson
-2. Amanda Hulten
+2. Amanda Hultén
