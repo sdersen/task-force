@@ -34,7 +34,7 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     }
     //Checks if user allredy exists
     if ($databaseEmail) {
-        $_SESSION['errors'][] = 'The email is allredy registerd.';
+        $_SESSION['errors'][] = 'The email is already registered';
         redirect('/register.php');
     } else {
         // Gives that new user a default profile-image
