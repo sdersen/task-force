@@ -33,7 +33,15 @@
                         </div>
                         <span class="bold-info-text">Created: </span><span><?= $list['created_at']; ?></span>
 
+                        <!-- ADDED A CHECK VALUE IN ORDER TO SEE IF THERE ARE ANY UNDONE TASKS -->
+                        <?php $doneTask = 0; ?>
                         <?php foreach (getTasksForList($list['id'], $database) as $task) : ?>
+                            <?php
+                            if ($task['completed_at'] === NULL) {
+                                $doneTask = $doneTask + 1; // IF THERE ARE ANY UNDONE TASKS, ADD 1 TO CHECK VALUE
+                            }
+                            ?>
+
                             <div class="task-container-in-list">
                                 <form class="done-form-list" action="/app/tasks/done.php" method="POST">
                                     <input type="hidden" id="redirect" name="redirect" value="1">
@@ -62,6 +70,21 @@
                             <button class="btn btn-danger done-list-btn" type="submit">List Done</button>
                             <input type="hidden" id="done_id" name="done_id" value="<?= $list['id'] ?>">
                         </form>
+
+                        <!-- NEW BUTTON TO MARK ALL TASKS IN THE LIST DONE/UNDONE  -->
+                        <!-- IF THERE ARE TASKS TO BE COMPLETED, SHOW DONE-BUTTON - ELSE UNDONE-BUTTON -->
+                        <?php if ($doneTask > 0) : ?>
+                            <form action="app/lists/all-complete.php" method="POST">
+                                <button class="btn btn-danger done-tasks-btn" type="submit">Toggle all done</button>
+                                <input type="hidden" id="done_tasks" name="done_tasks" value="<?= $list['id'] ?>">
+                            </form>
+                        <?php else : ?>
+                            <form action="app/lists/all-complete.php" method="POST">
+                                <button class="btn btn-danger done-tasks-btn" type="submit">Toggle all undone</button>
+                                <input type="hidden" id="undone_tasks" name="undone_tasks" value="<?= $list['id'] ?>">
+                            </form>
+                        <?php endif; ?>
+                        <!-- END OF NEW FEATURE  -->
 
                         <div class="edit-list-container hidden">
                             <form action="app/lists/update.php" method="post">
