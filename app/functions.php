@@ -113,3 +113,25 @@ function SetListOrTaskDone($database, $id, $doneDate, $query, $bind): void
     $statement->bindParam(':date', $doneDate, PDO::PARAM_STR);
     $statement->execute();
 }
+
+
+// NEW SEARCH FUNCTION
+function searchPost(PDO $database, string $query): array
+{
+    $query = "%" . htmlspecialchars($query) . "%";
+    $id = $_SESSION['user']['id'];
+
+    $statement = $database->prepare("SELECT
+    *
+    FROM tasks
+    WHERE title
+    LIKE :query
+    AND user_id = :id
+    ORDER BY
+    title ASC");
+    $statement->bindParam(':query', $query, PDO::PARAM_STR);
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}

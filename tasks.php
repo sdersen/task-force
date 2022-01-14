@@ -6,7 +6,12 @@
         <h3 style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></h3>
         <p>Start structuring your days, weeks, garden, home or anyting else you would like! Get started and add your tasks bellow.</p>
         <p>Psssst, you can also add to-do lists to better structure your tasks. Click on Lists in the menu above...</p>
-        <button class="open-create-task-btn create-btns">+</button>
+        <button class="open-create-task-btn create-btns">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button onclick="window.location.href='/search.php'" class="open-create-task-btn create-btns">
+            <i class="fas fa-search"></i>
+        </button>
         <?php if (isset($_SESSION['task_errors'])) : ?>
             <?php foreach ($_SESSION['task_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
