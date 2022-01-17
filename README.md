@@ -26,8 +26,9 @@ A simpel to-do app as a school project. The app allows the user to:
 
 -   Features added by [Chris M.](https://github.com/chrs-m)
     ```
-    - Mark all tasks complete with one click
-    - Searching for tasks
+    - Mark all tasks complete with one click.
+    - Searching for tasks.
+    - Add checklists (subtasks) to tasks.
     ```
 
 # Installation
