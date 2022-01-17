@@ -6,10 +6,11 @@ require __DIR__ . '/../autoload.php';
 
 // Creates a task.
 
-if (isset($_POST['title'])) {
-    $title = trim($_POST['title']);
-    $description = trim($_POST['description']);
+if (isset($_POST['title']) || isset($_POST['addToChecklist'])) {
+    $title = isset($_POST['title']) ? trim($_POST['title']) : trim($_POST['addToChecklist']); //CHANGED IN ORDER TO REUSE SAME VARIABLES
+    $description = isset($_POST['description']) ? trim($_POST['description']) : trim($_POST['addToChecklist']); //CHANGED IN ORDER TO REUSE SAME VARIABLES
     $deadline = $_POST['date'];
+    $parentId = $_POST['parent-id'] ?? null; //ADDED IN ORDER TO BE ABLE TO ADD CHECKLIST ITEMS
     //user id
     $id = $_SESSION['user']['id'];
     $createdDate = date("Y-m-d");
@@ -23,13 +24,15 @@ if (isset($_POST['title'])) {
         redirect('/tasks.php');
     }
 
-    $statement = $database->prepare('INSERT INTO tasks (title, description, created_at, deadline_at, user_id)
-    VALUES (:title, :description, :created_at, :deadline_at, :user_id);');
+    $statement = $database->prepare('INSERT INTO tasks (title, description, created_at, deadline_at, user_id, parent_id)
+    VALUES (:title, :description, :created_at, :deadline_at, :user_id, :parent_id);');
+
     $statement->bindParam(':title', $title, PDO::PARAM_STR);
     $statement->bindParam(':description', $description, PDO::PARAM_STR);
     $statement->bindParam(':deadline_at', $deadline, PDO::PARAM_STR);
     $statement->bindParam(':created_at', $createdDate, PDO::PARAM_STR);
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+    $statement->bindParam(':parent_id', $parentId, PDO::PARAM_INT); //ADDED IN ORDER TO BE ABLE TO ADD CHECKLIST ITEMS
 
     $statement->execute();
 
