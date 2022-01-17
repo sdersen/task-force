@@ -116,6 +116,13 @@ function SetListOrTaskDone($database, $id, $doneDate, $query, $bind): void
     $statement->execute();
 }
 
+function SetListOrTaskUndone($database, $id, $query, $bind): void
+{
+    $statement = $database->prepare($query);
+    $statement->bindParam($bind, $id, PDO::PARAM_INT);
+    $statement->execute();
+}
+
 
 // NEW SEARCH FUNCTION
 function searchPost(PDO $database, string $query): array
