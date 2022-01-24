@@ -2,7 +2,9 @@
 
 # Task Force
 
-A simpel to-do app as a school project. The app allows the user to:
+A simpel to-do app as a school project. You can clone this repo or visit https://task-force.sofiadersen.com/ 
+
+The app allows the user to:
 
 -   Create an account.
 -   Login/Logout.
@@ -24,7 +26,7 @@ A simpel to-do app as a school project. The app allows the user to:
 
 # Installation
 
-To install this project follow this list
+To install this project follow this list:
 
 -   Clone the project
 
