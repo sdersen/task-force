@@ -2,7 +2,9 @@
 
 # Task Force
 
-A simpel to-do app as a school project. The app allows the user to:
+A simpel to-do app as a school project. You can clone this repo or visit https://task-force.sofiadersen.com/ 
+
+The app allows the user to:
 
 -   Create an account.
 -   Login/Logout.
@@ -26,13 +28,14 @@ A simpel to-do app as a school project. The app allows the user to:
 
 -   Features added by [Chris M.](https://github.com/chrs-m)
     ```
-    - Mark all tasks complete with one click
-    - Searching for tasks
+    - Mark all tasks complete with one click.
+    - Searching for tasks.
+    - Add checklists (subtasks) to tasks.
     ```
 
 # Installation
 
-To install this project follow this list
+To install this project follow this list:
 
 -   Clone the project
 

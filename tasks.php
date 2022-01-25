@@ -187,9 +187,16 @@
                             <input class="form-control" type="text" id="addToChecklist" name="addToChecklist" placeholder="Add subtask to checklist here" maxlength="35">
                             <button class="btn btn-sm btn-primary" type="submit">Add</button>
                         </form>
+
                         <?php foreach (getChecklists($database, $task['id']) as $checklistTask) : ?>
-                            <input type="checkbox" id="<?= $checklistTask['id'] ?> " name="<?= $checklistTask['id'] ?>" value="<?= $checklistTask['id'] ?>">
-                            <label for="<?= $checklistTask['id'] ?>"><?= $checklistTask['title'] ?></label><br>
+                            <form action="" class="checklist-items">
+                                <input type="checkbox" data-taskId="<?= $checklistTask['id'] ?>" id="<?= $checklistTask['id'] ?> " name="is_completed" <?= ($checklistTask['completed_at'] === null) ? "" : 'checked' ?>>
+                                <input type="hidden" name="done_id" value="<?= $checklistTask['id'] ?>">
+                                <input type="hidden" name="redirect" value="true">
+                                <label for="checkbox" <?php if (isset($checklistTask['completed_at'])) {
+                                                            echo 'class="subtask-complete"';
+                                                        }; ?>><?= $checklistTask['title'] ?></label><br>
+                            </form>
                         <?php endforeach; ?>
                     </div>
                     <!-- END OF CHECKLIST -->

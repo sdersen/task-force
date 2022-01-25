@@ -68,3 +68,24 @@ tasksInLists.forEach((taskInlist) => {
 
   doneInput.addEventListener('click', () => form.submit());
 });
+
+// NEW FUNCTION FOR CHECKLIST ITEMS AND CHECKBOXES
+const checklistItems = document.querySelectorAll('.checklist-items');
+checklistItems.forEach((checklistItem) => {
+  const checkbox = checklistItem.querySelector('input[type=checkbox]');
+  checkbox.addEventListener('change', () => {
+    const formData = new FormData(checklistItem);
+    for (var [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+    fetch('/app/tasks/done.php', {
+      method: 'post',
+      body: new FormData(checklistItem),
+    }).then((response) => {
+      if (checklistItem.classlist === 'subtask-complete') {
+        checklistItem.classList.remove('subtask-complete');
+      }
+      checklistItem.classList.toggle('subtask-complete');
+    });
+  });
+});
