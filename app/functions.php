@@ -43,8 +43,10 @@ function getTasks($id, $database): array
             return $tasksByTitle;
         };
     };
+
+    // ADDED parent_ID TO QUERY IN ORDER TO SORT OUT THE CHECKLIST ITEMS
     if (!isset($_POST['sort'])) {
-        $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL;');
+        $statement = $database->query('SELECT * FROM tasks WHERE user_id = :user_id AND completed_at IS NULL AND parent_id IS NULL;');
         $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
         $statement->execute();
         $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -113,3 +115,54 @@ function SetListOrTaskDone($database, $id, $doneDate, $query, $bind): void
     $statement->bindParam(':date', $doneDate, PDO::PARAM_STR);
     $statement->execute();
 }
+
+function SetListOrTaskUndone($database, $id, $query, $bind): void
+{
+    $statement = $database->prepare($query);
+    $statement->bindParam($bind, $id, PDO::PARAM_INT);
+    $statement->execute();
+}
+
+
+// NEW SEARCH FUNCTION
+function searchPost(PDO $database, string $query): array
+{
+    $query = "%" . htmlspecialchars($query) . "%";
+    $id = $_SESSION['user']['id'];
+
+    $statement = $database->prepare("SELECT
+    *
+    FROM tasks
+    WHERE title
+    LIKE :query
+    AND user_id = :id
+    ORDER BY
+    title ASC");
+    $statement->bindParam(':query', $query, PDO::PARAM_STR);
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+//NEW CHECKLIST FUNCTION
+function getChecklists(PDO $database, int $taskId): array
+{
+    $statement = $database->query('SELECT
+    *
+    FROM tasks
+    WHERE parent_id = :task_id');
+    $statement->bindParam(':task_id', $taskId, PDO::PARAM_INT);
+    $statement->execute();
+
+    $getChecklists = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $getChecklists;
+}
+
+// add parent_id i tasks
+// hidden input parent_id
+// rename getChecklists to getChildTasks
+// get all tasks WITHOUT parent_id to MAIN TASK
+// get all tasks WITH parent_id to checklist

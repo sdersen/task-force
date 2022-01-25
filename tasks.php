@@ -6,7 +6,13 @@
         <h3 style="font-weight: bold;"><?php echo 'Welcome ' . htmlspecialchars($_SESSION['user']['name']) . '!'; ?></h3>
         <p>Start structuring your days, weeks, garden, home or anyting else you would like! Get started and add your tasks bellow.</p>
         <p>Psssst, you can also add to-do lists to better structure your tasks. Click on Lists in the menu above...</p>
-        <button class="open-create-task-btn create-btns">+</button>
+        <button class="open-create-task-btn create-btns">
+            <i class="fas fa-plus"></i>
+        </button>
+        <!-- NEW SEARCH BUTTON -->
+        <button onclick="window.location.href='/search.php'" class="open-create-task-btn create-btns">
+            <i class="fas fa-search"></i>
+        </button>
         <?php if (isset($_SESSION['task_errors'])) : ?>
             <?php foreach ($_SESSION['task_errors'] as $error) : ?>
                 <p class="alert alert-danger"><?= $error ?></p>
@@ -90,6 +96,30 @@
                                             <path fill="currentColor" d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path>
                                         </svg>
                                     </button>
+                                    <button class="show-checklist-btn edit-and-add-btns" aria-label="Show checklist button">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                            <path d="M79.428,34.643H22.737C10.179,34.643,0,44.822,0,57.379v56.692c0,12.557,10.179,22.737,22.737,22.737h56.692
+			c12.557,0,22.737-10.179,22.737-22.737V57.379C102.165,44.822,91.986,34.643,79.428,34.643z M80.016,113.337l-57.313-0.033V56.611
+			l0.621-0.033l56.725,0.033L80.016,113.337z" />
+
+                                            <path d="M500.648,68.698h-340.55c-6.275,0-11.352,5.077-11.352,11.352c0,6.274,5.077,11.352,11.352,11.352h340.55
+			c6.274,0,11.352-5.077,11.352-11.352C512,73.775,506.923,68.698,500.648,68.698z" />
+
+                                            <path d="M79.428,204.918H22.737C10.179,204.918,0,215.097,0,227.654v56.692c0,12.557,10.179,22.737,22.737,22.737h56.692
+			c12.557,0,22.737-10.179,22.737-22.737v-56.692C102.165,215.097,91.986,204.918,79.428,204.918z M80.016,283.612l-57.313-0.033
+			v-56.692l0.621-0.033l56.725,0.033L80.016,283.612z" />
+
+                                            <path d="M500.648,238.973h-340.55c-6.275,0-11.352,5.077-11.352,11.352s5.077,11.352,11.352,11.352h340.55
+			c6.274,0,11.352-5.077,11.352-11.352S506.923,238.973,500.648,238.973z" />
+
+                                            <path d="M79.428,375.192H22.737C10.179,375.192,0,385.372,0,397.929v56.692c0,12.557,10.179,22.737,22.737,22.737h56.692
+			c12.557,0,22.737-10.179,22.737-22.737v-56.692C102.165,385.372,91.986,375.192,79.428,375.192z M80.016,453.886l-57.313-0.033
+			v-56.692l0.621-0.033l56.725,0.033L80.016,453.886z" />
+
+                                            <path d="M500.648,409.247h-340.55c-6.275,0-11.352,5.077-11.352,11.352s5.077,11.352,11.352,11.352h340.55
+			c6.274,0,11.352-5.077,11.352-11.352S506.923,409.247,500.648,409.247z" />
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                             <p class="task-description"><?= htmlspecialchars($task['description']); ?></p>
@@ -148,6 +178,28 @@
                             <input type="hidden" id="id" name="id" value="<?= $task['id'] ?>">
                         </form>
                     </div>
+
+                    <!-- NEW CHECKLIST -->
+                    <div class="checklist-form hidden">
+                        <p>Here can you add subtasks in a checklist!</p>
+                        <form action="app/tasks/create.php" method="POST">
+                            <input type="hidden" name="parent-id" value="<?= $task['id'] ?>">
+                            <input class="form-control" type="text" id="addToChecklist" name="addToChecklist" placeholder="Add subtask to checklist here" maxlength="35">
+                            <button class="btn btn-sm btn-primary" type="submit">Add</button>
+                        </form>
+
+                        <?php foreach (getChecklists($database, $task['id']) as $checklistTask) : ?>
+                            <form action="" class="checklist-items">
+                                <input type="checkbox" data-taskId="<?= $checklistTask['id'] ?>" id="<?= $checklistTask['id'] ?> " name="is_completed" <?= ($checklistTask['completed_at'] === null) ? "" : 'checked' ?>>
+                                <input type="hidden" name="done_id" value="<?= $checklistTask['id'] ?>">
+                                <input type="hidden" name="redirect" value="true">
+                                <label for="checkbox" <?php if (isset($checklistTask['completed_at'])) {
+                                                            echo 'class="subtask-complete"';
+                                                        }; ?>><?= $checklistTask['title'] ?></label><br>
+                            </form>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- END OF CHECKLIST -->
                 </article>
             <?php endforeach; ?>
         </section>
