@@ -184,7 +184,7 @@
                                 <input type="checkbox" data-taskId="<?= $checklistTask['id'] ?>" id="<?= $checklistTask['id'] ?> " name="is_completed" <?= ($checklistTask['completed_at'] === null) ? "" : 'checked' ?>>
                                 <input type="hidden" name="done_id" value="<?= $checklistTask['id'] ?>">
                                 <input type="hidden" name="redirect" value="true">
-                                <label for="checkbox" <?php if (isset($checklistTask['completed_at'])) : ?> <?= 'class="subtask-complete"' ?> <?php endif; ?>>
+                                <label for="checkbox" <?= isset($checklistTask['completed_at']) ? 'class="subtask-complete"' : "" ?>>
                                     <?= $checklistTask['title'] ?>
                                 </label><br>
                             </form>
