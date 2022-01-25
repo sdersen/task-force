@@ -37,7 +37,7 @@
                         <?php $doneTask = 0; ?>
                         <?php foreach (getTasksForList($list['id'], $database) as $task) : ?>
                             <?php
-                            if ($task['completed_at'] === NULL) {
+                            if ($task['completed_at'] === null) {
                                 $doneTask = $doneTask + 1; // IF THERE ARE ANY UNDONE TASKS, ADD 1 TO CHECK VALUE
                             }
                             ?>
