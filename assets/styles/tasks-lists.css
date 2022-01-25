@@ -1,141 +1,148 @@
 .form-control {
-    max-width: 700px;
+  max-width: 700px;
 }
 /* Tasks ------------------------------------ */
 
 path {
-    fill: rgb(62, 63, 63);
+  fill: rgb(62, 63, 63);
 }
 svg {
-    height: 20px;
+  height: 20px;
 }
 .headline-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 .headline-container label {
-    font-size: clamp(1rem, 0.8519rem + 0.7407vw, 1.5rem);
-    font-weight: bold;
+  font-size: clamp(1rem, 0.8519rem + 0.7407vw, 1.5rem);
+  font-weight: bold;
 }
 .create-task-container {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .task-container {
-    border: rgb(190, 189, 189) 1px solid;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 15px;
-    max-width: 700px;
+  border: rgb(190, 189, 189) 1px solid;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 15px;
+  max-width: 700px;
 }
 .task-info {
-    width: 100%;
+  width: 100%;
 }
 .task-container span {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 .task-title {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .task-description {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 /* Fixes edit btns so the won't block on small screens */
 .edit-btn-container {
-    width: 97px;
-    display: flex;
-    justify-content: flex-end;
+  width: 97px;
+  display: flex;
+  justify-content: flex-end;
 }
 .edit-and-add-btns {
-    background-color: transparent;
-    border: none;
-    height: 26px;
+  background-color: transparent;
+  border: none;
+  height: 26px;
 }
 .list-form {
-    display: flex;
-    align-items: flex-end;
-    margin-top: 10px;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 10px;
 }
 .select-list-dropdown {
-    max-width: 200px;
-    height: 35px;
+  max-width: 200px;
+  height: 35px;
 }
 .bold-info-text {
-    font-weight: bold;
+  font-weight: bold;
 }
 .date-list-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .flex-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
+
+/* NEW CLASS FOR WHEN SUBTASK IS COMPLETED */
+.subtask-complete {
+  color: var(--complete-green);
+  text-decoration: line-through;
+}
+
 /* Lists --------------------------------------- */
 
 .list-container {
-    border: var(--border-grey) 1px solid;
-    border-radius: 5px;
-    padding: 15px;
-    max-width: 700px;
-    margin-bottom: 10px;
+  border: var(--border-grey) 1px solid;
+  border-radius: 5px;
+  padding: 15px;
+  max-width: 700px;
+  margin-bottom: 10px;
 }
 .list-container span {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 .task-container-in-list {
-    border: var(--border-grey) 1px solid;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 15px;
-    max-width: 700px;
+  border: var(--border-grey) 1px solid;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 15px;
+  max-width: 700px;
 }
 .task-container-in-list input[type='checkbox'] {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .task-container-in-list label {
-    font-size: clamp(1rem, 0.8519rem + 0.7407vw, 1.5rem);
-    font-weight: bold;
+  font-size: clamp(1rem, 0.8519rem + 0.7407vw, 1.5rem);
+  font-weight: bold;
 }
 .task-info-container {
-    margin-right: 5px;
-    margin-bottom: -5px;
+  margin-right: 5px;
+  margin-bottom: -5px;
 }
 .date-container-in-list {
-    margin-left: 40px;
+  margin-left: 40px;
 }
 .task-in-list-description {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .flex-btn-container {
-    display: flex;
+  display: flex;
 }
 .hidden {
-    display: none;
+  display: none;
 }
 @media screen and (min-width: 992px) {
-    path {
-        fill: rgb(169, 172, 172);
-    }
-    .task-container:hover path {
-        fill: rgb(54, 54, 54);
-    }
-    .list-container:hover path {
-        fill: rgb(54, 54, 54);
-    }
+  path {
+    fill: rgb(169, 172, 172);
+  }
+  .task-container:hover path {
+    fill: rgb(54, 54, 54);
+  }
+  .list-container:hover path {
+    fill: rgb(54, 54, 54);
+  }
 }
 @media screen and (min-width: 769px) {
-    .date-list-container {
-        flex-direction: row;
-    }
+  .date-list-container {
+    flex-direction: row;
+  }
 }
 @media screen and (min-width: 554px) {
-    .task-description {
-        margin-left: 40px;
-    }
-    .date-list-container {
-        margin-left: 40px;
-    }
+  .task-description {
+    margin-left: 40px;
+  }
+  .date-list-container {
+    margin-left: 40px;
+  }
 }

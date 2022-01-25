@@ -25,12 +25,18 @@ The app allows the user to:
 -   I'm able to remove a task from a list.
 -   I'm able to delete a user along with all their lists and tasks.
 
+
 # Wunderlist+
+
+# Features added from Wunderlist+:
+
 -   Features added by [Chris M.](https://github.com/chrs-m)
     ```
     - Mark all tasks complete with one click.
     - Searching for tasks.
     - Add checklists (subtasks) to tasks.
+    ```
+
 # Installation
 
 To install this project follow this list:
