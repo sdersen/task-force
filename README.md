@@ -3,7 +3,7 @@
 # Task Force
 
 A simpel to-do app as a school project. You can clone this repo or visit https://task-force.sofiadersen.com/ 
-For Wunderlist+ visit and clone: https://github.com/sdersen/task-force/pull/4
+For Wunderlist+ visit and clone: https://github.com/sdersen/task-force/pull/6
 
 The app allows the user to:
 
