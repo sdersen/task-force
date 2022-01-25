@@ -3,7 +3,7 @@
 # Task Force
 
 A simpel to-do app as a school project. You can clone this repo or visit https://task-force.sofiadersen.com/ 
-FOr Wunderlist+ visit and clone: https://github.com/sdersen/task-force/pull/4
+For Wunderlist+ visit and clone: https://github.com/sdersen/task-force/pull/4
 
 The app allows the user to:
 
@@ -26,6 +26,13 @@ The app allows the user to:
 -   I'm able to delete a user along with all their lists and tasks.
 
 -   **Wunderlist+:**
+-   Features added by [Chris M.](https://github.com/chrs-m)
+    ```
+    - Mark all tasks complete with one click.
+    - Searching for tasks.
+    - Add checklists (subtasks) to tasks.
+   
+
 -   I'm able to search all tasks.
 -   I'm able to add a checklist to a task.
 -   I'm able to complete a list and all it's tasks.
