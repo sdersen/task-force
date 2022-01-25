@@ -31,12 +31,6 @@ The app allows the user to:
     - Mark all tasks complete with one click.
     - Searching for tasks.
     - Add checklists (subtasks) to tasks.
-   
-
--   I'm able to search all tasks.
--   I'm able to add a checklist to a task.
--   I'm able to complete a list and all it's tasks.
-
 # Installation
 
 To install this project follow this list:
